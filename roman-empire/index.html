@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Roman Empire | Ancient History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #8b1a1a;
+      --primary-light: #c44d4d;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --roman-red: #8b1a1a;
+      --senate-purple: #5b2d8e;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a0808 0%, #2d1010 30%, #3d1818 60%, #1a0808 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(139,26,26,0.15) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-8px,8px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.5), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%238b1a1a"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(139,26,26,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #6b1a1a 0%, #4a1010 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--roman-red);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #3d1818;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e8d0d0;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--roman-red) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(139,26,26,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--roman-red);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--roman-red), #c44d4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--roman-red);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e8d0d0;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--roman-red);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--roman-red);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #fdf5f5 0%, #f8e8e8 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #3d1818;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--roman-red); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e8d0d0;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #fdf5f5, #f0d8d8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--roman-red);
+      box-shadow: 0 8px 20px rgba(139,26,26,0.15);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #6b1a1a, #8b2a2a);
+      color: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      display: block;
+      color: var(--gold-light);
+    }
+    .stat-box .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    .emperor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .emperor-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #e8d0d0;
+      transition: var(--transition);
+    }
+    .emperor-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); transform: translateY(-4px); }
+    .emperor-card i { font-size: 2.5rem; color: var(--roman-red); margin-bottom: 0.8rem; }
+    .emperor-card .emperor-name { font-weight: 700; font-size: 1.1rem; }
+    .emperor-card .emperor-reign { color: #8b6b5a; font-size: 0.9rem; }
+
+    footer {
+      background: linear-gradient(160deg, #1a0808 0%, #2d1010 100%);
+      color: #d4c0c0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a0808;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Roman Empire</h1>
+      <div class="subtitle">Dominion of the Eagles · 27 BC – 476 AD</div>
+      <p>The mightiest empire of the ancient world — a civilization that shaped law, language, and culture for two millennia</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-globe-europe"></i> Overview</a></li>
+      <li><a href="#government"><i class="fas fa-landmark"></i> Government</a></li>
+      <li><a href="#emperors"><i class="fas fa-crown"></i> Emperors</a></li>
+      <li><a href="#army"><i class="fas fa-shield-alt"></i> Military</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Eternal Empire</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-map"></i>
+          <h3>Vast Territory</h3>
+          <p>At its peak under Trajan (117 AD), the empire covered <strong>5 million square kilometers</strong>, stretching from Britain to Mesopotamia, from the Rhine to the Sahara — home to 70 million people.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Remarkable Longevity</h3>
+          <p>The Roman state endured for over <strong>1,200 years</strong> — from the founding of the Republic (509 BC) to the fall of Constantinople (1453 AD). The Western Empire alone lasted 500 years.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-road"></i>
+          <h3>Infrastructure Marvel</h3>
+          <p>Over <strong>400,000 km</strong> of roads connected the empire. Aqueducts supplied cities with fresh water. The saying "All roads lead to Rome" was literally true.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-language"></i>
+          <h3>Latin & Greek</h3>
+          <p>Latin dominated the West; Greek the East. Latin evolved into French, Spanish, Italian, Portuguese, and Romanian — spoken by nearly a billion people today.</p>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box"><span class="number">5M</span><span class="label">Sq Km at Peak</span></div>
+        <div class="stat-box"><span class="number">70M</span><span class="label">Population</span></div>
+        <div class="stat-box"><span class="number">400K</span><span class="label">Km of Roads</span></div>
+        <div class="stat-box"><span class="number">500</span><span class="label">Years (West)</span></div>
+      </div>
+    </section>
+
+    <section id="government">
+      <h2>Government & Society</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-democrat"></i>
+          <h3>From Republic to Empire</h3>
+          <p>The Roman Republic (509–27 BC) was governed by the Senate, consuls, and assemblies. After Julius Caesar's assassination and civil war, Augustus established the Principate — effectively monarchy disguised as republican tradition.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Roman Law</h3>
+          <p>The Twelve Tables (450 BC) and later the Corpus Juris Civilis formed the foundation of Western legal systems. Concepts like "innocent until proven guilty" come from Roman law.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Pax Romana</h3>
+          <p>The "Roman Peace" (27 BC – 180 AD) was a period of unprecedented stability, economic prosperity, and cultural flourishing across the Mediterranean world.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-coins"></i>
+          <h3>Economy & Trade</h3>
+          <p>A single currency (denarius), common market, and safe sea lanes enabled trade from India to Britain. Grain from Egypt, olive oil from Spain, wine from Gaul — the empire was economically integrated.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "I found Rome a city of bricks and left it a city of marble." — Augustus Caesar
+      </div>
+    </section>
+
+    <section id="emperors">
+      <h2>Great Emperors</h2>
+      <div class="emperor-grid">
+        <div class="emperor-card">
+          <i class="fas fa-laurel-wreath"></i>
+          <div class="emperor-name">Augustus</div>
+          <div class="emperor-reign">27 BC – 14 AD</div>
+          <p>First emperor. Established the Pax Romana, reformed administration, and transformed Rome.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-columns"></i>
+          <div class="emperor-name">Trajan</div>
+          <div class="emperor-reign">98–117 AD</div>
+          <p>Empire reached its greatest extent. Massive public building program including Trajan's Column.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-scroll"></i>
+          <div class="emperor-name">Hadrian</div>
+          <div class="emperor-reign">117–138 AD</div>
+          <p>Built Hadrian's Wall in Britain. Consolidated borders. Great patron of arts and architecture.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-book"></i>
+          <div class="emperor-name">Marcus Aurelius</div>
+          <div class="emperor-reign">161–180 AD</div>
+          <p>Philosopher-emperor. His <em>Meditations</em> remain a classic of Stoic philosophy. Last of the Five Good Emperors.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-church"></i>
+          <div class="emperor-name">Constantine I</div>
+          <div class="emperor-reign">306–337 AD</div>
+          <p>Legalized Christianity. Founded Constantinople. Reformed the empire for a new era.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-divide"></i>
+          <div class="emperor-name">Theodosius I</div>
+          <div class="emperor-reign">379–395 AD</div>
+          <p>Made Christianity the state religion. Last emperor to rule both East and West before permanent division.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="army">
+      <h2>The Roman Military</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-chess-board"></i>
+          <h3>The Legion</h3>
+          <p>The backbone of Roman power. Each legion had ~5,200 heavily armored infantry, organized into cohorts and centuries. Discipline was iron — decimation punished cowardice.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-fort-awesome"></i>
+          <h3>Engineering & Siege</h3>
+          <p>Romans were master military engineers. They built fortified camps every night on campaign, constructed siege engines, and could bridge rivers in days.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-virus"></i>
+          <h3>Auxiliaries</h3>
+          <p>Non-citizen troops provided cavalry, archers, and specialized skills. After 25 years of service, they received Roman citizenship — a powerful tool of integration.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-water"></i>
+          <h3>Naval Power</h3>
+          <p>The Roman navy eliminated piracy from the Mediterranean and ensured the safe transport of grain, goods, and troops across the empire's internal sea.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Enduring Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-language"></i>
+          <h3>Language & Literature</h3>
+          <p>Latin gave birth to the Romance languages. Virgil's <em>Aeneid</em>, Cicero's speeches, and Ovid's poetry are still read. The Latin alphabet is used by billions.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-gavel"></i>
+          <h3>Law & Government</h3>
+          <p>Roman legal principles underpin modern civil law systems. The Senate, republic, and concepts of citizenship shaped Western political thought.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-archway"></i>
+          <h3>Architecture & Engineering</h3>
+          <p>Arches, domes, concrete, aqueducts, and the Colosseum — Roman engineering achievements were unmatched for a thousand years after the empire's fall.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-church"></i>
+          <h3>Christianity</h3>
+          <p>Rome persecuted Christianity, then adopted it. The Roman Catholic Church preserved Latin, Roman administration, and became the dominant institution of medieval Europe.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-calendar"></i>
+          <h3>Calendar</h3>
+          <p>The Julian calendar (introduced by Caesar, refined by Augustus) is the basis of our modern calendar. The months July and August are named after Julius Caesar and Augustus.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe"></i>
+          <h3>Endless Inspiration</h3>
+          <p>From Shakespeare's plays to modern films, from national constitutions to the architecture of Washington D.C. — Rome's shadow stretches across the ages.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "Rome has grown since its humble beginnings that it is now overwhelmed by its own greatness." — Livy, Roman historian
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Roman Empire · Ancient History</strong></p>
+      <p style="margin-top: 0.5rem;">SPQR — Senatus Populusque Romanus: The Senate and People of Rome.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
