@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Mongol Empire | Medieval History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #6b4a2a;
+      --primary-light: #a07848;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --steppe-green: #4a6b3a;
+      --sky-blue: #4a7ab5;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a1510 0%, #2d2015 30%, #3d3020 50%, #4a3a25 70%, #1a1510 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(74,107,58,0.08) 0%, transparent 40%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%236b4a2a"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(107,74,42,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #4a3520 0%, #2d1d10 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #3d2818;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e0d5c8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(107,74,42,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), #a07848);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #4a3520, #6b4a2a);
+      color: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      display: block;
+      color: var(--gold-light);
+    }
+    .stat-box .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--primary);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d5c8;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #f5efe5 0%, #ebe0d0 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #3d2818;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--primary); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d5c8;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f5efe5, #e8d8c0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      box-shadow: 0 8px 20px rgba(107,74,42,0.15);
+    }
+
+    .khanate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .khanate-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #e0d5c8;
+      transition: var(--transition);
+    }
+    .khanate-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); transform: translateY(-4px); }
+    .khanate-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.8rem; }
+    .khanate-card .khanate-name { font-weight: 700; color: var(--primary); }
+
+    footer {
+      background: linear-gradient(160deg, #1a1510 0%, #2d2015 100%);
+      color: #d4c5a0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a1510;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Mongol Empire</h1>
+      <div class="subtitle">The Largest Contiguous Empire in History · 1206–1368</div>
+      <p>From the steppes of Central Asia, a nomadic people conquered half the known world — and changed global history forever</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#genghis"><i class="fas fa-crown"></i> Genghis Khan</a></li>
+      <li><a href="#conquests"><i class="fas fa-horse"></i> Conquests</a></li>
+      <li><a href="#pax"><i class="fas fa-dove"></i> Pax Mongolica</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>Empire of the Steppes</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-globe-asia"></i>
+          <h3>Unprecedented Size</h3>
+          <p>At its peak around 1279, the Mongol Empire covered <strong>24 million square kilometers</strong> — the largest contiguous land empire in history. It stretched from Korea to Hungary, from Siberia to the Persian Gulf, encompassing 25% of the world's land area.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Population</h3>
+          <p>The empire ruled over <strong>100 million people</strong> — roughly a quarter of the world's population at the time. It connected China, Central Asia, Persia, Russia, and the Middle East under a single political system.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Rapid Expansion</h3>
+          <p>From a collection of nomadic tribes in 1206, the Mongols conquered the largest empire in history in just <strong>three generations</strong>. No empire before or since has grown so fast.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-horse-head"></i>
+          <h3>Horse Culture</h3>
+          <p>Mongol warriors learned to ride before they could walk. Each warrior had multiple horses, allowing them to travel up to <strong>160 km per day</strong>. Their mobility was unmatched by any sedentary army.</p>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box"><span class="number">24M</span><span class="label">Square Kilometers</span></div>
+        <div class="stat-box"><span class="number">100M</span><span class="label">People Ruled</span></div>
+        <div class="stat-box"><span class="number">25%</span><span class="label">World's Land Area</span></div>
+        <div class="stat-box"><span class="number">160</span><span class="label">Km Per Day Travel</span></div>
+      </div>
+    </section>
+
+    <section id="genghis">
+      <h2>Genghis Khan — Universal Ruler</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-crown"></i></div>
+        <div>
+          <h3>Temüjin Becomes Genghis</h3>
+          <p>Born around 1162 as Temüjin, he endured a brutal childhood — his father poisoned, his family abandoned, himself enslaved. Through sheer will, military genius, and political skill, he united the warring Mongol tribes. In 1206, a council proclaimed him <strong>"Genghis Khan"</strong> — Universal Ruler.</p>
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-brain"></i>
+          <h3>Military Genius</h3>
+          <p>Genghis Khan created a disciplined army organized in decimal units (10, 100, 1,000, 10,000). He promoted based on merit, not birth. His commanders were chosen for ability — former enemies could rise to lead armies.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-scroll"></i>
+          <h3>Yassa — Mongol Law</h3>
+          <p>Genghis codified laws governing everything from military discipline to religious freedom. The Yassa forbade theft, adultery, and the kidnapping of women — common steppe practices that had kept tribes at war.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-dove"></i>
+          <h3>Religious Tolerance</h3>
+          <p>Unlike many conquerors, Genghis practiced religious freedom. His empire included Muslims, Christians, Buddhists, Taoists, and shamanists. He often exempted clergy from taxation — a pragmatic policy that reduced resistance.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "I am the punishment of God. If you had not committed great sins, God would not have sent a punishment like me upon you." — Attributed to Genghis Khan
+      </div>
+    </section>
+
+    <section id="conquests">
+      <h2>The Mongol Conquests</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">1205–1209</span>
+          <strong>Unification & Early Campaigns</strong>
+          <p>Genghis unified the Mongol tribes, then turned to the Tangut kingdom of Xi Xia and the Jin dynasty of northern China. These campaigns taught the Mongols siege warfare — they learned fast.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1219–1221</span>
+          <strong>Destruction of Khwarezm</strong>
+          <p>When the Khwarezm Shah executed Mongol ambassadors, Genghis unleashed a campaign of total destruction. Cities like Samarkand, Bukhara, and Urgench were annihilated. Millions died — some regions never recovered.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1237–1241</span>
+          <strong>Invasion of Europe</strong>
+          <p>Under Ögedei Khan, Mongol armies swept through Russia, Poland, and Hungary. They defeated European knights at the battles of Legnica and Mohi. Only the death of Ögedei in 1241 halted their advance — the Mongols withdrew to elect a new Khan.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1258</span>
+          <strong>Fall of Baghdad</strong>
+          <p>Hülegü Khan destroyed Baghdad, the capital of the Abbasid Caliphate — the heart of Islamic civilization for 500 years. The Caliph was killed (reportedly rolled in a carpet and trampled). The Golden Age of Islam was over.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1279</span>
+          <strong>Conquest of China</strong>
+          <p>Kublai Khan completed the conquest of the Southern Song dynasty, uniting China under Mongol rule. He founded the Yuan Dynasty, becoming Emperor of China — the first non-Chinese ruler to do so.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pax">
+      <h2>The Pax Mongolica</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-road"></i>
+          <h3>Silk Road Security</h3>
+          <p>Under Mongol rule, the entire Silk Road came under one authority for the first time. Merchants, travelers, and missionaries could cross Eurasia safely — "a maiden with a gold nugget on her head could walk unmolested."</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-exchange-alt"></i>
+          <h3>Global Exchange</h3>
+          <p>Goods, ideas, technologies, and diseases flowed freely. Gunpowder, paper, printing, and the compass traveled west. Persian medicine, astronomy, and mathematics reached China. It was the first era of true globalization.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-feather-alt"></i>
+          <h3>Marco Polo</h3>
+          <p>The Venetian merchant traveled the Silk Road to the court of Kublai Khan, serving him for 17 years. His book amazed Europe with tales of the wealth and sophistication of the East — inspiring Columbus and generations of explorers.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-skull-crossbones"></i>
+          <h3>The Black Death</h3>
+          <p>The interconnected Mongol world also spread disease. The plague that became the Black Death in Europe (1347) likely traveled along Mongol trade routes from Central Asia — the dark side of globalization.</p>
+        </div>
+      </div>
+      <div class="khanate-grid">
+        <div class="khanate-card">
+          <i class="fas fa-dragon"></i>
+          <div class="khanate-name">Yuan Dynasty</div>
+          <p>China & Mongolia · Founded by Kublai Khan · Lasted until 1368</p>
+        </div>
+        <div class="khanate-card">
+          <i class="fas fa-mosque"></i>
+          <div class="khanate-name">Ilkhanate</div>
+          <p>Persia & Middle East · Founded by Hülegü · Eventually converted to Islam</p>
+        </div>
+        <div class="khanate-card">
+          <i class="fas fa-igloo"></i>
+          <div class="khanate-name">Golden Horde</div>
+          <p>Russia & Eastern Europe · Founded by Batu Khan · Dominated Russia for 250 years</p>
+        </div>
+        <div class="khanate-card">
+          <i class="fas fa-mountain"></i>
+          <div class="khanate-name">Chagatai Khanate</div>
+          <p>Central Asia · Heart of the old Silk Road · Preserved Mongol traditions longest</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Legacy of the Mongols</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-dna"></i>
+          <h3>Genetic Legacy</h3>
+          <p>DNA studies suggest that <strong>16 million men</strong> alive today — about 0.5% of the world's male population — carry a Y-chromosome that may trace back to Genghis Khan and his male descendants. He was history's most prolific ancestor.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe"></i>
+          <h3>First Globalization</h3>
+          <p>The Mongol Empire connected East and West in ways never before possible. The exchange of goods, technologies, and ideas accelerated world history — and made the modern interconnected world possible.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Reassessment</h3>
+          <p>Modern historians are reassessing the Mongols. While their conquests were devastating (some estimates: 30–40 million dead), their rule also brought religious tolerance, international law, meritocracy, and cultural exchange on an unprecedented scale.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-map"></i>
+          <h3>Political Legacy</h3>
+          <p>The Mongol Empire shaped the political map of Asia. Russia's development was profoundly influenced by the "Mongol Yoke." China's last imperial dynasty (Qing) had Manchu rulers who claimed Mongol heritage. Persia's history was forever changed.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The Mongols created a vast international world, the likes of which had never been seen before — and would not be seen again until the modern age." — Historian Jack Weatherford
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Mongol Empire · Medieval History</strong></p>
+      <p style="margin-top: 0.5rem;">From the steppes to the world — the empire that connected continents.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
