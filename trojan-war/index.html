@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Trojan War | Ancient History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #8b1a2b;
+      --primary-light: #b34a5a;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #0d1117 0%, #1a1c2b 30%, #1f1820 60%, #0d1117 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(139,26,43,0.1) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(10px,-10px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%238b1a2b"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(139,26,43,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, var(--primary) 0%, #6e1422 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #3d2b1a;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #ece1cc;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(139,26,43,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--primary);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #ece1cc;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #fdf8ed 0%, #f7efda 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #4a3720;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--primary); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #ece1cc;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #fdf8ed, #f7efda);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      box-shadow: 0 8px 20px rgba(139,26,43,0.15);
+    }
+
+    footer {
+      background: linear-gradient(160deg, #0d1117 0%, #1a1e2b 100%);
+      color: #d4c5a0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Trojan War</h1>
+      <div class="subtitle">Myth, Legend & History</div>
+      <p>c. 1260–1180 BC · The epic conflict between Greeks and Trojans immortalized by Homer</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#causes"><i class="fas fa-fire"></i> Causes</a></li>
+      <li><a href="#heroes"><i class="fas fa-users"></i> Heroes</a></li>
+      <li><a href="#events"><i class="fas fa-sword"></i> Key Events</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Legendary War</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-city"></i>
+          <h3>Troy</h3>
+          <p>A wealthy, fortified city located in what is now northwestern Turkey, near the Dardanelles strait. Troy controlled vital trade routes between the Aegean and the Black Sea.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-book"></i>
+          <h3>Homer's Epics</h3>
+          <p>The war is primarily known through Homer's <em>Iliad</em> and <em>Odyssey</em>, composed around the 8th century BC. The <em>Iliad</em> covers only a few weeks in the tenth year of the war.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flag"></i>
+          <h3>The Greek Alliance</h3>
+          <p>Mycenae, Sparta, Athens, Ithaca and other Greek city-states united under Agamemnon's leadership to sail a thousand ships against Troy.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Ten Years of War</h3>
+          <p>According to legend, the siege lasted ten long years, ending only through the famous stratagem of the Trojan Horse.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "Sing, O Muse, of the wrath of Achilles..." — Opening line of Homer's <em>Iliad</em>
+      </div>
+    </section>
+
+    <section id="causes">
+      <h2>What Sparked the War?</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-apple-alt"></i>
+          <h3>The Golden Apple</h3>
+          <p>Eris, goddess of discord, threw a golden apple inscribed "To the Fairest" among goddesses Hera, Athena, and Aphrodite. Paris of Troy was chosen to judge.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-heart"></i>
+          <h3>The Judgment of Paris</h3>
+          <p>Aphrodite promised Paris the most beautiful woman in the world — Helen of Sparta — in exchange for being chosen as the fairest goddess.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-running"></i>
+          <h3>Helen's Abduction</h3>
+          <p>Paris traveled to Sparta, where King Menelaus hosted him. Paris either seduced or abducted Helen and fled back to Troy, violating sacred guest-friendship.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-handshake"></i>
+          <h3>Oath of Tyndareus</h3>
+          <p>All of Helen's former suitors had sworn an oath to defend her marriage. When Menelaus called upon them, the Greek kings were bound to join the expedition against Troy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="heroes">
+      <h2>Heroes & Warriors</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <h3>Achilles</h3>
+          <p>The greatest Greek warrior. His mother Thetis dipped him in the River Styx, making him nearly invincible — except for his heel. His rage and withdrawal form the core of the <em>Iliad</em>.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-chess-king"></i></div>
+        <div>
+          <h3>Agamemnon</h3>
+          <p>King of Mycenae and commander-in-chief of the Greek forces. His conflict with Achilles over the captive Briseis nearly cost the Greeks the war.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-horse"></i></div>
+        <div>
+          <h3>Hector</h3>
+          <p>Prince of Troy and its greatest defender. A noble warrior and loving family man, he was ultimately slain by Achilles in single combat outside the walls of Troy.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-brain"></i></div>
+        <div>
+          <h3>Odysseus</h3>
+          <p>King of Ithaca, renowned for his cunning. He devised the Trojan Horse strategy. His ten-year journey home is the subject of Homer's <em>Odyssey</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <h2>Key Events of the War</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">The Gathering</span>
+          <strong>Greek Fleet Assembled at Aulis</strong>
+          <p>Over 1,000 ships gathered. Agamemnon was forced to sacrifice his daughter Iphigenia to appease Artemis for favorable winds.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">Year 1–9</span>
+          <strong>The Long Siege</strong>
+          <p>Greeks besieged Troy. Battles raged on the plains outside the walls. The Trojans, aided by allies, successfully defended their city for years.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">The Wrath</span>
+          <strong>Achilles Withdraws</strong>
+          <p>Agamemnon seized Briseis from Achilles. Enraged, Achilles refused to fight. Without him, the Greeks suffered devastating losses.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">The Duel</span>
+          <strong>Death of Hector</strong>
+          <p>After Hector killed his beloved friend Patroclus, Achilles returned to battle with fury. He slew Hector and dragged his body behind his chariot.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">The Fall</span>
+          <strong>The Trojan Horse</strong>
+          <p>Odysseus devised a giant wooden horse filled with Greek warriors. The Trojans brought it inside their walls. At night, the Greeks emerged and destroyed Troy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Historical Truth & Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-archaeology"></i>
+          <h3>Schliemann's Discovery</h3>
+          <p>In the 1870s, German archaeologist Heinrich Schliemann excavated the site of Hisarlik in Turkey, believing it to be Homer's Troy. Multiple layers of settlement were found.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-layer-group"></i>
+          <h3>Troy VIIa</h3>
+          <p>Archaeologists identified Troy VIIa (c. 1260–1180 BC) as the most likely candidate for Homeric Troy, showing evidence of destruction by warfare.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-theater-masks"></i>
+          <h3>Enduring Stories</h3>
+          <p>The Trojan War has inspired countless works: from ancient Greek tragedies to Shakespeare's <em>Troilus and Cressida</em>, to modern films like <em>Troy</em> (2004).</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-language"></i>
+          <h3>Language & Phrases</h3>
+          <p>"Achilles' heel" (fatal weakness), "Trojan Horse" (deceptive trap), and "the face that launched a thousand ships" all derive from this legend.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "There is no greater sorrow than to recall a happy time in misery." — Dante, reflecting on Trojan War tales
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Trojan War · Ancient History</strong></p>
+      <p style="margin-top: 0.5rem;">Where myth meets history — the war that echoed through millennia.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
