@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Peloponnesian War | Ancient History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #5b3a1a;
+      --primary-light: #8b5e3c;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --athens: #d4782f;
+      --sparta: #8b1a1a;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a1a0f 0%, #2d2416 30%, #3d2e1a 60%, #1a1a0f 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 25% 45%, rgba(212,120,47,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 75% 55%, rgba(139,26,26,0.08) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%235b3a1a"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(91,58,26,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #3d2e1a 0%, #2d1f0f 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #3d2e1a;
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #3d2e1a;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e8ddd0;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(91,58,26,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), #8b5e3c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--primary);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e8ddd0;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #f5efe0 0%, #ede3d0 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #3d2e1a;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--primary); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e8ddd0;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f5efe0, #e8dcc8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      box-shadow: 0 8px 20px rgba(91,58,26,0.15);
+    }
+
+    .versus-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(90deg, rgba(212,120,47,0.1), rgba(139,26,26,0.1));
+      border-radius: 20px;
+    }
+    .versus-item {
+      text-align: center;
+      padding: 1.5rem 2.5rem;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .versus-athens { background: rgba(212,120,47,0.2); color: #8b4513; border: 2px solid #d4782f; }
+    .versus-sparta { background: rgba(139,26,26,0.2); color: #6b1010; border: 2px solid #8b1a1a; }
+    .versus-vs { font-size: 2.5rem; font-weight: 700; color: var(--dark); }
+
+    footer {
+      background: linear-gradient(160deg, #1a1a0f 0%, #2d2416 100%);
+      color: #d4c5a0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a1a0f;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Peloponnesian War</h1>
+      <div class="subtitle">Athens vs. Sparta · 431–404 BC</div>
+      <p>The devastating civil war that tore the Greek world apart and ended the Golden Age of Athens</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#causes"><i class="fas fa-fire"></i> Causes</a></li>
+      <li><a href="#phases"><i class="fas fa-history"></i> Phases</a></li>
+      <li><a href="#leaders"><i class="fas fa-users"></i> Leaders</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>Greece's Great Civil War</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-owl"></i>
+          <h3>Athens & The Delian League</h3>
+          <p>An empire of over 150 city-states paying tribute to Athens. The world's first democracy commanded the strongest navy in Greece, with wealth from silver mines and imperial tribute.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-haltered"></i>
+          <h3>Sparta & The Peloponnesian League</h3>
+          <p>A militaristic society where every male citizen was a professional soldier. Sparta led a coalition of land powers, feared for their unbeatable hoplite phalanx.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Timeline</h3>
+          <p><strong>431–404 BC</strong> — Twenty-seven years of intermittent warfare across Greece, Sicily, and the Aegean. The war ended with Athens' surrender and the fall of its empire.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-feather-alt"></i>
+          <h3>Thucydides' Account</h3>
+          <p>The Athenian general Thucydides wrote the definitive history of the war, pioneering objective historical analysis. His work remains essential reading in military academies and political science.</p>
+        </div>
+      </div>
+      <div class="versus-bar">
+        <div class="versus-item versus-athens">
+          <i class="fas fa-ship" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Athenian Empire</strong><br>
+          <small>Naval Power · Democracy · Wealth</small>
+        </div>
+        <div class="versus-vs">VS</div>
+        <div class="versus-item versus-sparta">
+          <i class="fas fa-helmet-battle" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Peloponnesian League</strong><br>
+          <small>Land Army · Oligarchy · Discipline</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="causes">
+      <h2>Origins of the Conflict</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Athenian Imperialism</h3>
+          <p>After the Persian Wars, Athens transformed the Delian League from a defensive alliance into an empire. Allies who tried to leave were brutally punished.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-balance-scale-left"></i>
+          <h3>Spartan Fear</h3>
+          <p>Thucydides wrote: "What made war inevitable was the growth of Athenian power and the fear which this caused in Sparta." This "Thucydides Trap" still describes great power rivalry today.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flag"></i>
+          <h3>Corinthian Rivalry</h3>
+          <p>Corinth, Sparta's powerful ally, felt threatened by Athenian expansion into its sphere of influence. Conflicts over Corcyra and Potidaea pulled both great powers toward war.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-ban"></i>
+          <h3>The Megarian Decree</h3>
+          <p>Athens imposed economic sanctions on Megara, a Spartan ally, excluding them from all Athenian-controlled ports and markets. Sparta demanded its repeal — Athens refused.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "It was the rise of Athens and the fear that this instilled in Sparta that made war inevitable." — Thucydides, <em>History of the Peloponnesian War</em>
+      </div>
+    </section>
+
+    <section id="phases">
+      <h2>The Three Phases of War</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">431–421 BC</span>
+          <strong>The Archidamian War</strong>
+          <p>Sparta invaded Attica annually, burning crops while Athenians retreated behind their Long Walls. Pericles' strategy relied on naval raids. The plague of Athens (430 BC) killed Pericles and a third of the population. Ended with the fragile Peace of Nicias.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">415–413 BC</span>
+          <strong>The Sicilian Expedition</strong>
+          <p>Athens' disastrous attempt to conquer Syracuse. Alcibiades, the expedition's architect, defected to Sparta after being recalled for scandal. The entire Athenian fleet and army were destroyed — the turning point of the war.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">413–404 BC</span>
+          <strong>The Decelean War (Ionian War)</strong>
+          <p>Sparta occupied Decelea in Attica permanently, cutting off Athens' silver mines. With Persian gold funding a Spartan fleet under Lysander, Athens was finally starved into surrender after the Battle of Aegospotami (405 BC).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leaders">
+      <h2>Key Figures</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-brain"></i></div>
+        <div>
+          <h3>Pericles (Athens)</h3>
+          <p>The architect of Athenian greatness. His strategy of naval dominance and defensive walls might have succeeded — but the plague took him in 429 BC. His Funeral Oration defined Athenian ideals.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-mask"></i></div>
+        <div>
+          <h3>Alcibiades (Athens / Sparta / Persia)</h3>
+          <p>The most controversial figure of the war: brilliant, charming, and utterly untrustworthy. He switched sides three times — from Athens to Sparta to Persia and back — profoundly shaping the war's course.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-anchor"></i></div>
+        <div>
+          <h3>Lysander (Sparta)</h3>
+          <p>Spartan admiral who built a navy with Persian funding and decisively defeated Athens at Aegospotami. He blockaded the Piraeus and forced Athens' final surrender in 404 BC.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-skull"></i></div>
+        <div>
+          <h3>Cleon (Athens)</h3>
+          <p>A populist demagogue who rose after Pericles' death. He advocated brutal policies — including the proposed massacre of all Mytilenean men. Killed in battle at Amphipolis in 422 BC.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-chess-rook"></i></div>
+        <div>
+          <h3>Brasidas (Sparta)</h3>
+          <p>Sparta's most dynamic general. He marched north and successfully detached several Athenian allies. Killed alongside Cleon at Amphipolis, his death removed a major obstacle to peace.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Consequences & Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-archway"></i>
+          <h3>End of Athens' Golden Age</h3>
+          <p>The Long Walls were torn down to the music of flutes. The Athenian Empire dissolved. Though Athens recovered some independence, it never regained its former power and prosperity.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-democrat"></i>
+          <h3>Democracy Overthrown</h3>
+          <p>Sparta installed the "Thirty Tyrants," an oligarchic regime that executed 5% of Athenian citizens. Though democracy was restored within a year, the trauma was profound.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chess"></i>
+          <h3>The Thucydides Trap</h3>
+          <p>Modern political scientists use the term to describe how a rising power (like China today) and an established power (like the USA) can slide into war through fear and miscalculation.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-map"></i>
+          <h3>Weakened Greece</h3>
+          <p>The war exhausted all Greek city-states, leaving them vulnerable. Within decades, Philip II of Macedon would conquer the weakened poleis, paving the way for Alexander the Great.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The strong do what they can and the weak suffer what they must." — Thucydides, the Melian Dialogue
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Peloponnesian War · Ancient History</strong></p>
+      <p style="margin-top: 0.5rem;">When brother fought brother — and Greece destroyed itself.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
