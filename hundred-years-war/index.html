@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Hundred Years' War | Medieval History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #1a3a6b;
+      --primary-light: #4d7dc4;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --england: #8b1a1a;
+      --france: #1a3a8b;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #0a1528 0%, #101d3d 30%, #182d5c 60%, #0a1528 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(139,26,26,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(26,58,139,0.1) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%231a3a6b"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(26,58,107,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #1a3055 0%, #0d1d3d 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #1a2d4d;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #d0d8e8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(26,58,107,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), #4d7dc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .versus-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(90deg, rgba(139,26,26,0.06), rgba(26,58,139,0.06));
+      border-radius: 20px;
+    }
+    .versus-item {
+      text-align: center;
+      padding: 1.5rem 2.5rem;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .versus-england { background: rgba(139,26,26,0.12); color: #6b1010; border: 2px solid #8b1a1a; }
+    .versus-france { background: rgba(26,58,139,0.12); color: #102860; border: 2px solid #1a3a8b; }
+    .versus-vs { font-size: 2.5rem; font-weight: 700; color: var(--dark); }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--primary);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #d0d8e8;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .battle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .battle-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      border-left: 5px solid var(--gold);
+      transition: var(--transition);
+    }
+    .battle-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .battle-card .battle-name { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+    .battle-card .battle-year { color: var(--gold); font-weight: 600; }
+    .battle-card .battle-winner { font-size: 0.9rem; margin-top: 0.5rem; }
+
+    .quote {
+      background: linear-gradient(135deg, #f0f4fa 0%, #e5ebf5 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #1a2d4d;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--primary); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #d0d8e8;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f0f4fa, #d8e4f0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      box-shadow: 0 8px 20px rgba(26,58,107,0.15);
+    }
+
+    footer {
+      background: linear-gradient(160deg, #0a1528 0%, #101d3d 100%);
+      color: #c0d0e0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #0a1528;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Hundred Years' War</h1>
+      <div class="subtitle">England vs. France · 1337–1453</div>
+      <p>The longest conflict in European history — a dynastic struggle that transformed two nations and ended the age of chivalry</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#causes"><i class="fas fa-fire"></i> Causes</a></li>
+      <li><a href="#battles"><i class="fas fa-swords"></i> Key Battles</a></li>
+      <li><a href="#joan"><i class="fas fa-female"></i> Joan of Arc</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>116 Years of War</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Not Quite 100 Years</h3>
+          <p>Despite its name, the war lasted <strong>116 years</strong> (1337–1453) — but it was not continuous. It was a series of campaigns, truces, and renewed hostilities across five generations.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-crown"></i>
+          <h3>Dynastic Conflict</h3>
+          <p>At its core was the question: who had the right to the French throne? English kings claimed descent from French royalty. When the Capetian dynasty died out in 1328, Edward III of England pressed his claim.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-map"></i>
+          <h3>Territorial Disputes</h3>
+          <p>English kings still held large territories in France — the Duchy of Aquitaine (Guyenne). French kings sought to absorb these lands into the royal domain. Conflict was inevitable.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flag"></i>
+          <h3>Birth of Nations</h3>
+          <p>The war transformed England and France from feudal collections of territories into <strong>nation-states</strong> with distinct identities, languages, and patriotic feeling. "England for the English" was born.</p>
+        </div>
+      </div>
+      <div class="versus-bar">
+        <div class="versus-item versus-england">
+          <i class="fas fa-flag" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Kingdom of England</strong><br>
+          <small>Plantagenet Dynasty · Longbowmen · Continental Ambitions</small>
+        </div>
+        <div class="versus-vs">VS</div>
+        <div class="versus-item versus-france">
+          <i class="fas fa-fleur-de-lis" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Kingdom of France</strong><br>
+          <small>Valois Dynasty · Heavy Cavalry · Home Territory</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="causes">
+      <h2>Roots of Conflict</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-sitemap"></i>
+          <h3>The Succession Crisis (1328)</h3>
+          <p>Charles IV of France died without a male heir. Edward III of England was his nephew through his mother Isabella. French nobles rejected Edward's claim, choosing Philip of Valois instead — citing Salic Law forbidding female succession.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-map-pin"></i>
+          <h3>Aquitaine & Gascony</h3>
+          <p>English kings were also vassals of the French crown for their lands in southwestern France. This awkward feudal relationship — a king bowing to another king — created endless friction.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-ship"></i>
+          <h3>Economic Rivalry</h3>
+          <p>England's wool trade with Flanders was vital. When France threatened Flanders, England intervened. Control of the Channel and access to continental markets were at stake.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>French Raids (1337)</h3>
+          <p>Philip VI confiscated Aquitaine and launched raids on the English coast. Edward III responded by formally claiming the French throne — and war began.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="battles">
+      <h2>Decisive Battles</h2>
+      <div class="battle-grid">
+        <div class="battle-card">
+          <div class="battle-name">Sluys</div>
+          <div class="battle-year">1340</div>
+          <div class="battle-winner"><strong>Winner:</strong> England · Naval battle that gave England control of the Channel for decades.</div>
+        </div>
+        <div class="battle-card">
+          <div class="battle-name">Crécy</div>
+          <div class="battle-year">1346</div>
+          <div class="battle-winner"><strong>Winner:</strong> England · English longbowmen decimated French heavy cavalry. A revolution in warfare.</div>
+        </div>
+        <div class="battle-card">
+          <div class="battle-name">Poitiers</div>
+          <div class="battle-year">1356</div>
+          <div class="battle-winner"><strong>Winner:</strong> England · The Black Prince captured King John II of France. France was humiliated.</div>
+        </div>
+        <div class="battle-card">
+          <div class="battle-name">Agincourt</div>
+          <div class="battle-year">1415</div>
+          <div class="battle-winner"><strong>Winner:</strong> England · Henry V's outnumbered army crushed the French. Immortalized by Shakespeare.</div>
+        </div>
+        <div class="battle-card">
+          <div class="battle-name">Orléans</div>
+          <div class="battle-year">1429</div>
+          <div class="battle-winner"><strong>Winner:</strong> France · Joan of Arc lifted the siege. The turning point of the war.</div>
+        </div>
+        <div class="battle-card">
+          <div class="battle-name">Castillon</div>
+          <div class="battle-year">1453</div>
+          <div class="battle-winner"><strong>Winner:</strong> France · French cannons destroyed the English army. The final battle of the war.</div>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "We few, we happy few, we band of brothers." — Shakespeare's Henry V at Agincourt
+      </div>
+    </section>
+
+    <section id="joan">
+      <h2>Joan of Arc — The Maid of Orléans</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-cross"></i></div>
+        <div>
+          <h3>The Peasant Girl Who Saved France</h3>
+          <p>A 17-year-old illiterate peasant from Domrémy who claimed divine voices told her to drive the English from France. She convinced the Dauphin (the future Charles VII) to give her command. Her arrival at Orléans in 1429 broke the English siege and turned the tide of the war.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">1429</span>
+          <strong>Victory at Orléans</strong>
+          <p>Joan arrived with supplies and inspired the French soldiers. Within nine days, the English siege was broken. It was the first major French victory in a generation.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1429</span>
+          <strong>Coronation of Charles VII</strong>
+          <p>Joan escorted the Dauphin through enemy territory to Reims, where he was crowned king in the traditional cathedral — a tremendous symbolic victory that legitimized his claim.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1430</span>
+          <strong>Capture & Trial</strong>
+          <p>Joan was captured by Burgundians (allied with England) and sold to the English. She was put on trial for heresy and witchcraft — a political trial dressed in religious robes.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1431</span>
+          <strong>Execution & Sainthood</strong>
+          <p>Burned at the stake in Rouen on May 30, aged 19. Her ashes were thrown into the Seine. She was canonized as a saint in 1920 — the patron saint of France.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Consequences & Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-bow-arrow"></i>
+          <h3>End of Chivalry</h3>
+          <p>The longbow and gunpowder made armored knights obsolete. Crécy, Poitiers, and Agincourt proved that common archers could defeat noble cavalry — democratizing warfare.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flag-usa"></i>
+          <h3>Rise of Nationalism</h3>
+          <p>England and France emerged as unified nations with distinct identities. English replaced French as the language of the English court. Patriotism was born.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-parliament"></i>
+          <h3>Constitutional Development</h3>
+          <p>Edward III needed Parliament to fund the war. In exchange, Parliament gained power over taxation — a crucial step toward English constitutional monarchy.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-crown"></i>
+          <h3>France Transformed</h3>
+          <p>France emerged stronger: royal authority was consolidated, the nobility weakened, and a standing army created. The foundations of absolute monarchy were laid — culminating in Louis XIV.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-rose"></i>
+          <h3>Wars of the Roses</h3>
+          <p>Defeat in France destabilized England. Returning soldiers and nobles turned on each other, sparking the Wars of the Roses (1455–1487) — a bloody civil war between Lancaster and York.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-book"></i>
+          <h3>Cultural Memory</h3>
+          <p>Shakespeare's history plays, countless novels, and films keep the war alive in imagination. Joan of Arc remains one of history's most compelling figures — saint, warrior, martyr.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The Hundred Years' War was the crucible in which the English and French nations were forged." — Modern historical consensus
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Hundred Years' War · Medieval History</strong></p>
+      <p style="margin-top: 0.5rem;">The war that ended chivalry and gave birth to nations.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
