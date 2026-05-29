@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Holy Roman Empire | Medieval History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #4a2080;
+      --primary-light: #7a5ab0;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --imperial-purple: #4a2080;
+      --papal-gold: #d4a832;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a1028 0%, #2d1845 30%, #3d2060 60%, #1a1028 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(212,168,50,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(74,32,128,0.15) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(212,168,50,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--imperial-purple); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%234a2080"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--imperial-purple); box-shadow: 0 4px 15px rgba(74,32,128,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #3d1868 0%, #281048 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--imperial-purple);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #2d1845;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #d8cce8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--imperial-purple) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(74,32,128,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--imperial-purple);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--imperial-purple), #7a5ab0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--imperial-purple);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #d8cce8;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--imperial-purple);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--imperial-purple);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .emperor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .emperor-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #d8cce8;
+      transition: var(--transition);
+    }
+    .emperor-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); transform: translateY(-4px); }
+    .emperor-card i { font-size: 2.5rem; color: var(--imperial-purple); margin-bottom: 0.8rem; }
+    .emperor-card .emperor-name { font-weight: 700; color: var(--imperial-purple); }
+    .emperor-card .emperor-reign { color: #6b5a8b; font-size: 0.9rem; }
+
+    .quote {
+      background: linear-gradient(135deg, #f5f0fa 0%, #ece0f5 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #2d1845;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--imperial-purple); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #d8cce8;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f5f0fa, #e0d0f0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--imperial-purple);
+      box-shadow: 0 8px 20px rgba(74,32,128,0.15);
+    }
+
+    footer {
+      background: linear-gradient(160deg, #1a1028 0%, #2d1845 100%);
+      color: #d0c0e0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a1028;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.3rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Holy Roman Empire</h1>
+      <div class="subtitle">Neither Holy, Nor Roman, Nor an Empire? · 800–1806</div>
+      <p>A thousand-year experiment in universal Christian rule — the complex political heart of medieval and early modern Europe</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#origins"><i class="fas fa-flag"></i> Origins</a></li>
+      <li><a href="#emperors"><i class="fas fa-crown"></i> Emperors</a></li>
+      <li><a href="#structure"><i class="fas fa-sitemap"></i> Structure</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Empire of the Germans</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-quote-right"></i>
+          <h3>Voltaire's Famous Joke</h3>
+          <p>"This agglomeration which was called and still calls itself the Holy Roman Empire was neither holy, nor Roman, nor an empire." Voltaire's 1756 quip captured the paradox — but for a thousand years, the Empire was a very real and powerful institution.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>1,006 Years</h3>
+          <p>From Charlemagne's coronation in 800 AD to Francis II's abdication in 1806, the Empire existed for over a millennium — longer than the Roman Empire itself. It was dissolved by Napoleon, who declared "the Empire of the Germans no longer exists."</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-map"></i>
+          <h3>Vast & Fragmented</h3>
+          <p>At its height, the Empire encompassed modern Germany, Austria, Czechia, Switzerland, the Low Countries, and parts of Italy, France, and Poland. It contained hundreds of semi-independent states: kingdoms, duchies, bishoprics, and free cities.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Elected Monarchy</h3>
+          <p>Unlike most kingdoms, the Emperor was elected — by seven (later more) <strong>Prince-Electors</strong>: the archbishops of Mainz, Trier, and Cologne, and the secular rulers of Bohemia, the Palatinate, Saxony, and Brandenburg.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The Holy Roman Empire is not an empire in the ordinary sense, but a federation of princes under an elected head." — Modern historical description
+      </div>
+    </section>
+
+    <section id="origins">
+      <h2>Foundation & Evolution</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">800 AD</span>
+          <strong>Charlemagne Crowned</strong>
+          <p>On Christmas Day, Pope Leo III crowned the Frankish king Charlemagne as "Emperor of the Romans." This revived the Western Roman imperial title — and established the idea that the Pope had the authority to crown emperors.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">962 AD</span>
+          <strong>Otto I — The True Beginning</strong>
+          <p>Otto the Great, King of East Francia, was crowned Emperor. Historians consider this the actual founding of the Holy Roman Empire. Otto transformed a fragmented German kingdom into the most powerful state in Europe.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1077</span>
+          <strong>Walk to Canossa</strong>
+          <p>Emperor Henry IV stood barefoot in the snow for three days begging Pope Gregory VII to lift his excommunication. The Investiture Controversy — who appoints bishops, Pope or Emperor? — defined medieval politics for generations.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">1356</span>
+          <strong>Golden Bull</strong>
+          <p>Emperor Charles IV issued the Golden Bull, establishing the college of seven Prince-Electors and formalizing imperial election procedures. This constitution governed the Empire until its dissolution.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="emperors">
+      <h2>Great Emperors</h2>
+      <div class="emperor-grid">
+        <div class="emperor-card">
+          <i class="fas fa-crown"></i>
+          <div class="emperor-name">Charlemagne</div>
+          <div class="emperor-reign">800–814</div>
+          <p>King of the Franks, first Western Emperor in 300 years. United much of Western Europe and sparked the Carolingian Renaissance.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-shield-alt"></i>
+          <div class="emperor-name">Otto I (the Great)</div>
+          <div class="emperor-reign">962–973</div>
+          <p>Defeated the Magyars at Lechfeld. Founded the Ottonian dynasty and the medieval German state.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-cross"></i>
+          <div class="emperor-name">Frederick I (Barbarossa)</div>
+          <div class="emperor-reign">1155–1190</div>
+          <p>The "Red Beard" — legendary Hohenstaufen emperor who fought the Pope and the Lombard League. Died on the Third Crusade.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-globe-europe"></i>
+          <div class="emperor-name">Frederick II</div>
+          <div class="emperor-reign">1220–1250</div>
+          <p>"Stupor Mundi" (Wonder of the World). Sicilian-born, Arabic-speaking, a patron of science and the arts — the most extraordinary medieval emperor.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-scroll"></i>
+          <div class="emperor-name">Charles IV</div>
+          <div class="emperor-reign">1355–1378</div>
+          <p>Issued the Golden Bull. Made Prague the imperial capital, founded Charles University — the oldest in Central Europe.</p>
+        </div>
+        <div class="emperor-card">
+          <i class="fas fa-eagle"></i>
+          <div class="emperor-name">Charles V</div>
+          <div class="emperor-reign">1519–1556</div>
+          <p>Ruled an empire "on which the sun never set" — Spain, the Netherlands, Austria, and the Americas. Presided over the Reformation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="structure">
+      <h2>How the Empire Worked</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-sitemap"></i>
+          <h3>Imperial Diet (Reichstag)</h3>
+          <p>The assembly of imperial estates: electors, princes, and free cities. It met to discuss laws, taxes, and war. Unlike absolute monarchies, the Emperor had to negotiate — not command.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-gavel"></i>
+          <h3>Imperial Courts</h3>
+          <p>The <strong>Reichskammergericht</strong> (Imperial Chamber Court) provided a legal forum for disputes between states — an early form of international law. It helped maintain peace without centralized force.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flag"></i>
+          <h3>Imperial Circles</h3>
+          <p>From 1500, the Empire was organized into <strong>Imperial Circles</strong> — regional groupings of states for mutual defense, tax collection, and maintaining order. A remarkably effective administrative innovation.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-church"></i>
+          <h3>Religious Division</h3>
+          <p>The Reformation split the Empire into Catholic and Protestant states. The Peace of Augsburg (1555) established the principle <strong>"Cuius regio, eius religio"</strong> — each prince determined his state's religion. The Thirty Years' War (1618–1648) was the catastrophic result of these tensions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>The End & Enduring Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>Dissolution (1806)</h3>
+          <p>After Napoleon's victories over Austria, Francis II abdicated the imperial throne and dissolved the Empire. The double-headed eagle flew no more. Germany became a patchwork of French-dominated states until Napoleon's own fall.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flag-usa"></i>
+          <h3>German Confederation & Unification</h3>
+          <p>After Napoleon, the German Confederation (1815–1866) attempted to fill the void. The Empire's legacy culminated in the German unification under Prussia in 1871 — the "Second Reich."</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-euro-sign"></i>
+          <h3>European Union Parallels</h3>
+          <p>Many see echoes of the Empire in the European Union: a decentralized federation of sovereign states, common legal institutions, and a complex balance between unity and diversity. The Empire showed that such structures can work — for centuries.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-landmark"></i>
+          <h3>Cultural Heritage</h3>
+          <p>The Empire left a rich legacy: magnificent cathedrals (Cologne, Prague, Aachen), universities (Heidelberg, Vienna, Leipzig), and the idea of Central Europe as a distinct cultural and political space. Its art, music, and literature shaped European civilization.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The Holy Roman Empire was neither holy, nor Roman, nor an empire — but it was, for a thousand years, the political expression of Central Europe." — Modern historical reassessment
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Holy Roman Empire · Medieval & Early Modern History</strong></p>
+      <p style="margin-top: 0.5rem;">A thousand years of emperors, princes, and the dream of universal Christian rule.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
