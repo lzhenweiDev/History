@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Alexander the Great | Ancient History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #3a2d6b;
+      --primary-light: #6b5da8;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --macedon: #3a2d6b;
+      --persia: #8b4513;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a1530 0%, #2d2550 30%, #3d2d6b 60%, #1a1530 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(139,69,19,0.08) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-10px,10px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%233a2d6b"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(58,45,107,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #4a3a8a 0%, #2d1f5c 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--macedon);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #2d1f5c;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e0d8f0;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--macedon) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(58,45,107,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--macedon);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--macedon), #6b5da8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--macedon);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d8f0;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--macedon);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--macedon);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #f5f0ff 0%, #ece5f8 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #2d1f5c;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--macedon); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d8f0;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f5f0ff, #e0d8f0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--macedon);
+      box-shadow: 0 8px 20px rgba(58,45,107,0.15);
+    }
+
+    .map-path {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: linear-gradient(90deg, #f5f0ff, #faf8f2, #fdf0e5);
+      border-radius: 20px;
+      overflow-x: auto;
+    }
+    .path-stop {
+      text-align: center;
+      min-width: 100px;
+      padding: 0.8rem 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--macedon);
+      border: 2px solid #e0d8f0;
+    }
+    .path-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #4a3a8a, #3a2d6b);
+      color: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      display: block;
+      color: var(--gold-light);
+    }
+    .stat-box .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      background: linear-gradient(160deg, #1a1530 0%, #2d2550 100%);
+      color: #d4cfe0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a1530;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Alexander the Great</h1>
+      <div class="subtitle">Conqueror of the Known World · 356–323 BC</div>
+      <p>The young Macedonian king who forged one of history's largest empires in just 13 years — and changed the world forever</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-crown"></i> Overview</a></li>
+      <li><a href="#early"><i class="fas fa-child"></i> Early Life</a></li>
+      <li><a href="#conquests"><i class="fas fa-sword"></i> Conquests</a></li>
+      <li><a href="#battles"><i class="fas fa-chess-rook"></i> Key Battles</a></li>
+      <li><a href="#legacy"><i class="fas fa-globe-asia"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Legend</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-map"></i>
+          <h3>Empire Size</h3>
+          <p>From Greece to India, Alexander's empire stretched over 5 million square kilometers — one of the largest empires in ancient history, spanning three continents.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Short Reign</h3>
+          <p>Alexander ruled for only 13 years (336–323 BC), yet in that time he conquered the mighty Persian Empire, reached the Indus River, and never lost a single battle.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-horse-head"></i>
+          <h3>Bucephalus</h3>
+          <p>Alexander's beloved horse, which he tamed as a boy when no one else could. The horse carried him through countless battles. When Bucephalus died, Alexander named a city after him.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-book"></i>
+          <h3>Aristotle's Pupil</h3>
+          <p>Tutored by the great philosopher Aristotle from age 13 to 16. Alexander carried a copy of Homer's <em>Iliad</em> on his campaigns — he saw himself as a new Achilles.</p>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box"><span class="number">32</span><span class="label">Age at Death</span></div>
+        <div class="stat-box"><span class="number">13</span><span class="label">Years of Reign</span></div>
+        <div class="stat-box"><span class="number">5M+</span><span class="label">Square Kilometers</span></div>
+        <div class="stat-box"><span class="number">70+</span><span class="label">Cities Founded</span></div>
+      </div>
+    </section>
+
+    <section id="early">
+      <h2>Early Life & Rise to Power</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-baby"></i>
+          <h3>Birth & Omens</h3>
+          <p>Born in 356 BC in Pella, Macedonia. Legends say the Temple of Artemis burned down on his birth night — because the goddess was attending his birth.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chess-king"></i>
+          <h3>Philip II</h3>
+          <p>His father transformed Macedonia from a backwater into Greece's dominant power. Philip's military reforms — the sarissa pike and the Macedonian phalanx — gave Alexander his unstoppable army.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>Assassination</h3>
+          <p>In 336 BC, Philip II was assassinated at his daughter's wedding. Alexander, aged 20, immediately seized the throne — and ruthlessly eliminated all rivals.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-fire"></i>
+          <h3>Thebes Destroyed</h3>
+          <p>When Thebes rebelled, Alexander razed the city to the ground, sparing only the temples and the house of the poet Pindar. Greece never challenged him again.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "My father will have nothing left to conquer!" — Young Alexander, reportedly complaining about Philip's military successes
+      </div>
+    </section>
+
+    <section id="conquests">
+      <h2>The Great Campaign</h2>
+      <div class="map-path">
+        <div class="path-stop"><i class="fas fa-flag"></i><br>Macedonia<br><small>334 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-water"></i><br>Granicus<br><small>334 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-fist-raised"></i><br>Issus<br><small>333 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-city"></i><br>Tyre<br><small>332 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-pyramid"></i><br>Egypt<br><small>332 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-swords"></i><br>Gaugamela<br><small>331 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-archway"></i><br>Persepolis<br><small>330 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-mountain"></i><br>Hindu Kush<br><small>329 BC</small></div>
+        <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="path-stop"><i class="fas fa-elephant"></i><br>India<br><small>326 BC</small></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">334 BC</span>
+          <strong>Crossing into Asia</strong>
+          <p>Alexander crossed the Hellespont with 37,000 men. He visited Troy, honoring Achilles, before defeating a Persian army at the Granicus River — his first major victory.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">333 BC</span>
+          <strong>Battle of Issus</strong>
+          <p>Alexander defeated Darius III in person, forcing the Persian king to flee and leave behind his family, whom Alexander treated with respect. The famous "Alexander Mosaic" depicts this battle.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">332 BC</span>
+          <strong>Siege of Tyre</strong>
+          <p>An island fortress that had never been taken. Alexander built a causeway to reach it — a feat of engineering still visible today. After seven months, Tyre fell.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">331 BC</span>
+          <strong>Battle of Gaugamela</strong>
+          <p>The decisive battle. Darius III fielded an army perhaps five times larger, with scythed chariots and war elephants. Alexander's tactical genius shattered the Persian center — Darius fled, and the Persian Empire collapsed.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">330 BC</span>
+          <strong>Burning of Persepolis</strong>
+          <p>The ceremonial capital of Persia was burned — whether deliberately or in a drunken revel is debated. It symbolized the end of Achaemenid power and Greek vengeance for the Persian burning of Athens.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">326 BC</span>
+          <strong>Into India</strong>
+          <p>Alexander crossed the Indus River and defeated King Porus at the Hydaspes. Impressed by Porus' bravery, Alexander made him an ally. But his exhausted army refused to go further — and Alexander finally turned back.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="battles">
+      <h2>Key Battles & Tactics</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-chess-board"></i>
+          <h3>The Hammer & Anvil</h3>
+          <p>Alexander's signature tactic: the phalanx (anvil) pinned the enemy, while the Companion Cavalry (hammer) struck the decisive blow at a weak point — usually led by Alexander himself.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Sarissa Phalanx</h3>
+          <p>The Macedonian infantry wielded sarissas — pikes up to 6 meters long. This wall of spear points was nearly impenetrable from the front, holding enemies in place for the cavalry charge.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-horse"></i>
+          <h3>Companion Cavalry</h3>
+          <p>Elite heavy cavalry, Alexander's personal shock troops. They charged in wedge formation, targeting gaps and the enemy commander — Alexander always led from the front.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-brain"></i>
+          <h3>Adaptability</h3>
+          <p>Alexander never used the same tactic twice. Against Scythian horse archers, mountain fortresses, war elephants, and scythed chariots — he always found a way to win.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion." — Attributed to Alexander the Great
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Death & Enduring Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-skull-crossbones"></i>
+          <h3>Mysterious Death</h3>
+          <p>Alexander died in Babylon in 323 BC, aged 32. The cause remains debated: poison, malaria, typhoid, or complications from old wounds. His body was preserved in honey.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-puzzle-piece"></i>
+          <h3>Fragmented Empire</h3>
+          <p>Without a clear heir, his generals (the Diadochi) fought for decades, splitting the empire into Hellenistic kingdoms: Ptolemaic Egypt, Seleucid Asia, and Antigonid Macedonia.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-language"></i>
+          <h3>Hellenistic World</h3>
+          <p>Greek language, culture, art, and philosophy spread across the known world. Koine Greek became the common language — the language of the New Testament and early Christianity.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-city"></i>
+          <h3>Alexandria</h3>
+          <p>The greatest of Alexander's 70+ cities. Alexandria in Egypt housed the Great Library and the Pharos Lighthouse — becoming the intellectual capital of the ancient world for centuries.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-globe"></i></div>
+        <div>
+          <h3>A Bridge Between Worlds</h3>
+          <p>Alexander's conquests connected Europe, Asia, and Africa in unprecedented ways. Trade routes opened, ideas mixed, and the fusion of Greek and Eastern cultures — Hellenism — laid foundations for the Roman Empire and Western civilization itself.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "There is nothing impossible to him who will try." — Alexander the Great
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>Alexander the Great · Ancient History</strong></p>
+      <p style="margin-top: 0.5rem;">The man who conquered the world before his 33rd birthday — and left a legacy that still shapes us today.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
