@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Hanseatic League | Medieval History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #1a4a6b;
+      --primary-light: #4a8ab5;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --sea: #1a5c8a;
+      --brick: #8b4a3a;
+      --timber: #6b5a3a;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #0a1a2d 0%, #102d4a 30%, #184060 50%, #102d4a 70%, #0a1a2d 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(139,74,58,0.08) 0%, transparent 40%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--sea); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%231a4a6b"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--sea); box-shadow: 0 4px 15px rgba(26,74,107,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #1a3d5c 0%, #0d2840 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--sea);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #1a3040;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #c8d8e8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--sea) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(26,74,107,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--sea);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--sea), #4a8ab5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .city-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #c8d8e8;
+      transition: var(--transition);
+    }
+    .city-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); transform: translateY(-4px); }
+    .city-card i { font-size: 2.5rem; color: var(--sea); margin-bottom: 0.8rem; }
+    .city-card .city-name { font-weight: 700; color: var(--sea); }
+
+    .quote {
+      background: linear-gradient(135deg, #eef4f8 0%, #e0eaf2 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #1a3040;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--sea); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .trade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .trade-item {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #c8d8e8;
+      transition: var(--transition);
+    }
+    .trade-item:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .trade-item i { font-size: 2rem; color: var(--sea); margin-bottom: 0.5rem; }
+    .trade-item .trade-name { font-weight: 600; color: var(--primary); }
+
+    footer {
+      background: linear-gradient(160deg, #0a1a2d 0%, #102d4a 100%);
+      color: #c0d0e0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #0a1a2d;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Hanseatic League</h1>
+      <div class="subtitle">Merchants, Ships & Monopoly · c. 1159–1669</div>
+      <p>The medieval trading network that turned Baltic cities into economic superpowers — a merchants' republic before its time</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-ship"></i> Overview</a></li>
+      <li><a href="#cities"><i class="fas fa-city"></i> Hanseatic Cities</a></li>
+      <li><a href="#trade"><i class="fas fa-balance-scale"></i> Trade Empire</a></li>
+      <li><a href="#power"><i class="fas fa-fist-raised"></i> Power & Decline</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>Merchants Who Ruled the Waves</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-globe-europe"></i>
+          <h3>What Was the Hanse?</h3>
+          <p>A confederation of merchant guilds and market towns across Northern Europe. At its peak, it included <strong>nearly 200 cities</strong> stretching from London to Novgorod, from Bergen to Cologne. It was not a state — but it wielded more economic power than most kingdoms.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Timeline</h3>
+          <p>The Hanseatic League existed for over <strong>500 years</strong> (c. 1159–1669). It dominated Baltic and North Sea trade from the 13th to the 15th centuries, then slowly declined as nation-states rose and trade routes shifted.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-handshake"></i>
+          <h3>No King, No Army</h3>
+          <p>The Hanse was unique: it had no permanent government, no standing army, no single ruler. It was governed by assemblies (Hansetage) of merchant representatives. Its power came from economic leverage and naval blockades — a soft power superpower.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-cog"></i>
+          <h3>The Cog</h3>
+          <p>The Hanseatic cog was the workhorse of medieval trade. A sturdy, wide-beamed ship carrying up to 200 tons of cargo. It could navigate shallow Baltic waters and withstand North Sea storms — the key to Hanseatic dominance.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The Hanseatic League was not a state, but it waged wars, made treaties, and commanded more economic power than any kingdom in Northern Europe." — Modern historian
+      </div>
+    </section>
+
+    <section id="cities">
+      <h2>The Great Hanseatic Cities</h2>
+      <div class="city-grid">
+        <div class="city-card">
+          <i class="fas fa-archway"></i>
+          <div class="city-name">Lübeck</div>
+          <p>The "Queen of the Hanse" — the founding city and undisputed leader. Its location on the Baltic made it the gateway between East and West.</p>
+        </div>
+        <div class="city-card">
+          <i class="fas fa-water"></i>
+          <div class="city-name">Hamburg</div>
+          <p>Gateway to the North Sea. Its port connected Baltic trade to England, Flanders, and the Atlantic. Still calls itself a "Free and Hanseatic City."</p>
+        </div>
+        <div class="city-card">
+          <i class="fas fa-crown"></i>
+          <div class="city-name">Danzig (Gdańsk)</div>
+          <p>The great port of the East. Polish grain, Prussian timber, and Russian furs flowed through Danzig to feed Western Europe.</p>
+        </div>
+        <div class="city-card">
+          <i class="fas fa-fish"></i>
+          <div class="city-name">Bergen</div>
+          <p>The Hanseatic <em>Kontor</em> (trading post) in Norway. Controlled the vital stockfish trade — dried cod that fed Catholic Europe on fast days.</p>
+        </div>
+        <div class="city-card">
+          <i class="fas fa-landmark"></i>
+          <div class="city-name">Bruges</div>
+          <p>The financial heart of the Hanse in Flanders. Where Baltic goods met Italian banking and Mediterranean luxuries.</p>
+        </div>
+        <div class="city-card">
+          <i class="fas fa-igloo"></i>
+          <div class="city-name">Novgorod</div>
+          <p>The easternmost outpost. Russian furs, wax, and honey were exchanged for Flemish cloth, German metalwork, and salt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="trade">
+      <h2>The Trade Empire</h2>
+      <div class="trade-grid">
+        <div class="trade-item"><i class="fas fa-fish"></i><div class="trade-name">Herring & Stockfish</div></div>
+        <div class="trade-item"><i class="fas fa-tree"></i><div class="trade-name">Timber & Pitch</div></div>
+        <div class="trade-item"><i class="fas fa-wheat-alt"></i><div class="trade-name">Grain & Rye</div></div>
+        <div class="trade-item"><i class="fas fa-paw"></i><div class="trade-name">Furs & Wax</div></div>
+        <div class="trade-item"><i class="fas fa-cube"></i><div class="trade-name">Salt</div></div>
+        <div class="trade-item"><i class="fas fa-tshirt"></i><div class="trade-name">Flemish Cloth</div></div>
+        <div class="trade-item"><i class="fas fa-hammer"></i><div class="trade-name">Metalwork</div></div>
+        <div class="trade-item"><i class="fas fa-beer"></i><div class="trade-name">Beer & Wine</div></div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-store-alt"></i>
+          <h3>The Kontor System</h3>
+          <p>Hanseatic trading posts abroad — fortified enclaves where merchants lived and worked. The four major <em>Kontore</em> were in London (the Steelyard), Bruges, Bergen, and Novgorod. They enjoyed extraterritorial rights and were governed by Hanseatic law.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Monopoly & Protection</h3>
+          <p>The Hanse operated as a cartel. Members received preferential trading rights and mutual protection. Non-members were excluded from the lucrative Baltic trade. Convoys with armed escorts protected ships from pirates.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-coins"></i>
+          <h3>Economic Dominance</h3>
+          <p>At its height, the Hanse controlled the flow of goods between Eastern Europe (raw materials) and Western Europe (manufactured goods). Kings and princes depended on Hanseatic loans and goods — and the League exploited this leverage ruthlessly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="power">
+      <h2>Power, War & Decline</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-swords"></i>
+          <h3>Wars Against Kings</h3>
+          <p>The Hanse waged war against Denmark (1361–1370) and won — the Treaty of Stralsund gave the League control over Danish fortresses and a veto over royal succession. A merchant league had humbled a kingdom.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-pirate"></i>
+          <h3>Pirates & Privateers</h3>
+          <p>The Baltic was infested with pirates — the <strong>Victual Brothers</strong> being the most famous. The Hanse fought them with naval patrols and brutal reprisals. Captured pirates were often executed en masse as a warning.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-down"></i>
+          <h3>Reasons for Decline</h3>
+          <p>Rising nation-states (England, Sweden, Russia) challenged Hanseatic privileges. The discovery of America shifted trade routes to the Atlantic. The herring migrated away from the Baltic. Internal rivalries weakened unity. The last Hansetag met in 1669.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-ship"></i>
+          <h3>The End</h3>
+          <p>The Hanseatic League never formally dissolved — it simply faded away. By the 17th century, it was irrelevant. But three cities — Hamburg, Bremen, and Lübeck — still carry "Hanseatic City" in their official names to this day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Legacy of the Hanse</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-archway"></i>
+          <h3>Brick Gothic</h3>
+          <p>Hanseatic wealth built magnificent churches, town halls, and merchant houses in the distinctive Brick Gothic style. Lübeck's Holstentor, Stralsund's town hall, and Danzig's St. Mary's Church are UNESCO World Heritage sites.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Maritime Law</h3>
+          <p>Hanseatic legal codes influenced maritime and commercial law across Northern Europe. The concept of a free city governed by merchant citizens shaped urban development for centuries.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-euro-sign"></i>
+          <h3>European Union Echoes</h3>
+          <p>The Hanse is often cited as a historical model for the EU: a voluntary confederation of cities/states united by trade, governed by consensus, crossing national boundaries. The spirit lives on.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-plane"></i>
+          <h3>Modern Hanse</h3>
+          <p>Today, a New Hanseatic League exists — a cultural network of former Hanseatic cities. Lufthansa ("Air Hansa") takes its name from the League. The Hanseatic legacy is still visible in city names, architecture, and civic pride across Northern Europe.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The Hanseatic League proved that economic cooperation could transcend political borders — a lesson as relevant today as it was 800 years ago."
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Hanseatic League · Medieval History</strong></p>
+      <p style="margin-top: 0.5rem;">The merchants' republic that ruled the northern seas without a single king.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
