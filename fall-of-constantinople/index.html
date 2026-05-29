@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Fall of Constantinople | Medieval History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #5b1a2e;
+      --primary-light: #8b3a5a;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --byzantine-purple: #5b1a8b;
+      --ottoman-green: #2d5a3a;
+      --cannon-bronze: #8b5a2b;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a0d15 0%, #2d1525 30%, #4a1d3d 50%, #2d1525 70%, #1a0d15 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.12) 0%, transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(91,26,139,0.15) 0%, transparent 40%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.5), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--byzantine-purple); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%235b1a2e"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(91,26,46,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #4a1525 0%, #2d0d18 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #3d1525;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e0d0d8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--byzantine-purple) 0%, var(--gold) 50%, var(--ottoman-green) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(91,26,46,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--byzantine-purple);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--byzantine-purple), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .versus-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(90deg, rgba(91,26,139,0.08), rgba(45,90,58,0.08));
+      border-radius: 20px;
+    }
+    .versus-item {
+      text-align: center;
+      padding: 1.5rem 2.5rem;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    .versus-byzantine { background: rgba(91,26,139,0.12); color: #4a1070; border: 2px solid #5b1a8b; }
+    .versus-ottoman { background: rgba(45,90,58,0.12); color: #1a4030; border: 2px solid #2d5a3a; }
+    .versus-vs { font-size: 2.5rem; font-weight: 700; color: var(--dark); }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--primary);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d0d8;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 15px rgba(201,161,59,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #f5f0f5 0%, #ece0ec 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #3d1525;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--primary); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d0d8;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f5f0f5, #e8d8e8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--byzantine-purple);
+      box-shadow: 0 8px 20px rgba(91,26,139,0.15);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #4a1525, #6b2038);
+      color: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      display: block;
+      color: var(--gold-light);
+    }
+    .stat-box .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      background: linear-gradient(160deg, #1a0d15 0%, #2d1525 100%);
+      color: #d4c0d0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a0d15;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.3rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>The Fall of Constantinople</h1>
+      <div class="subtitle">End of an Empire · May 29, 1453</div>
+      <p>The day the last bastion of the Roman Empire fell — and the Middle Ages came to an end</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#siege"><i class="fas fa-cannon"></i> The Siege</a></li>
+      <li><a href="#leaders"><i class="fas fa-users"></i> Leaders</a></li>
+      <li><a href="#fall"><i class="fas fa-flag"></i> The Fall</a></li>
+      <li><a href="#legacy"><i class="fas fa-globe"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Last Roman City</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-crown"></i>
+          <h3>Second Rome</h3>
+          <p>Constantinople had been the capital of the Eastern Roman (Byzantine) Empire for over 1,100 years. It was the largest and wealthiest city in Christendom — a bastion of Roman law, Greek culture, and Orthodox Christianity.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>The Theodosian Walls</h3>
+          <p>The greatest fortifications of the medieval world: triple walls with a moat, built in the 5th century. For a thousand years, no enemy had breached them. They had repelled Avars, Persians, Arabs, Bulgars, and Rus — but not the Ottoman Turks.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-down"></i>
+          <h3>An Empire Reduced</h3>
+          <p>By 1453, the "Empire" was a shadow: just the city itself, a few Aegean islands, and the Peloponnese. Population had shrunk to perhaps 50,000 — down from half a million in its golden age. The city was defended by only 7,000 soldiers.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe"></i>
+          <h3>End of an Era</h3>
+          <p>Historians consider 1453 the end of the Middle Ages. The last direct link to the Roman Empire was severed. Greek scholars fled west with ancient manuscripts, helping spark the Renaissance. The world had changed.</p>
+        </div>
+      </div>
+      <div class="versus-bar">
+        <div class="versus-item versus-byzantine">
+          <i class="fas fa-church" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Byzantine Empire</strong><br>
+          <small>Emperor Constantine XI · 7,000 defenders · Ancient walls</small>
+        </div>
+        <div class="versus-vs">VS</div>
+        <div class="versus-item versus-ottoman">
+          <i class="fas fa-mosque" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Ottoman Empire</strong><br>
+          <small>Sultan Mehmed II · 80,000–100,000 troops · Massive cannons</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="siege">
+      <h2>The 53-Day Siege</h2>
+      <div class="stat-grid">
+        <div class="stat-box"><span class="number">80K</span><span class="label">Ottoman Troops</span></div>
+        <div class="stat-box"><span class="number">7K</span><span class="label">Byzantine Defenders</span></div>
+        <div class="stat-box"><span class="number">53</span><span class="label">Days of Siege</span></div>
+        <div class="stat-box"><span class="number">1,123</span><span class="label">Years of Empire</span></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">April 2, 1453</span>
+          <strong>Siege Begins</strong>
+          <p>Sultan Mehmed II arrived with a vast army and fleet. He offered Constantine XI terms: surrender the city and leave in peace. Constantine refused. "To surrender the city is not in my power, nor in the power of any of its inhabitants." The siege began.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">April 6–18</span>
+          <strong>The Great Bombardment</strong>
+          <p>Mehmed's secret weapon: <strong>massive cannons</strong> designed by a Hungarian engineer named Urban. The largest — the "Basilica" — could fire 600 kg stone balls over a mile. Day after day, the walls were pounded. The defenders repaired breaches at night with rubble and desperation.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">April 22</span>
+          <strong>Ships Over Land</strong>
+          <p>The Byzantine chain blocked the Golden Horn. Mehmed's stunning solution: <strong>70 ships were dragged overland on greased logs</strong>, bypassing the chain and entering the harbor. The defenders now had to man the sea walls too — stretching their thin forces further.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">May 28</span>
+          <strong>The Last Night</strong>
+          <p>A final religious service in Hagia Sophia — the great cathedral of Eastern Christianity. Greeks and Latins, Orthodox and Catholic, prayed together. Constantine XI addressed his soldiers: "I will either save the city or die with it." At midnight, the final assault began.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leaders">
+      <h2>The Two Commanders</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-cross"></i></div>
+        <div>
+          <h3>Constantine XI Palaiologos</h3>
+          <p>The last Byzantine emperor. He refused to flee when the city fell, instead removing his imperial regalia and charging into the breach alongside his soldiers. His body was never found. Legend says an angel turned him to stone, and he will return one day to restore the Empire.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-star-and-crescent"></i></div>
+        <div>
+          <h3>Mehmed II "The Conqueror"</h3>
+          <p>The 21-year-old Ottoman sultan. Brilliant, ambitious, and ruthless. He spoke multiple languages, studied military history, and was determined to take Constantinople — a goal that had eluded Muslim armies for 800 years. After victory, he rode into Hagia Sophia and declared it a mosque.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="fall">
+      <h2>The Final Assault — May 29, 1453</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-moon"></i>
+          <h3>Three Waves</h3>
+          <p>Mehmed sent irregular troops first to tire the defenders, then Anatolian regulars, and finally the elite Janissaries. After hours of fighting, a small postern gate (the Kerkoporta) was found unlocked. Ottoman troops poured through.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>The Emperor Falls</h3>
+          <p>Constantine XI threw himself into the breach near the Gate of St. Romanus, fighting alongside his men. His last words, according to chroniclers: <strong>"The city is fallen, and I am still alive."</strong> He disappeared into the melee and was never seen again.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-church"></i>
+          <h3>Hagia Sophia</h3>
+          <p>Thousands of terrified citizens gathered in Hagia Sophia, praying for a miracle that did not come. Ottoman soldiers broke down the doors and took them captive. The great church — built by Justinian in 537 — became a mosque. Today it is a museum (and once again a mosque).</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-coins"></i>
+          <h3>Three Days of Plunder</h3>
+          <p>As was customary when a city refused to surrender, the Ottoman army was given three days to plunder. Priceless treasures, ancient manuscripts, and sacred relics were destroyed or scattered. The libraries of Constantinople — repositories of classical knowledge — were lost.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The city is fallen, and I am still alive." — Constantine XI's reported last words before charging into the breach
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>A World Transformed</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-book"></i>
+          <h3>The Renaissance</h3>
+          <p>Greek scholars fleeing Constantinople brought ancient manuscripts to Italy. The rediscovery of classical Greek texts fueled the Italian Renaissance. Without 1453, Western civilization might look very different.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe-europe"></i>
+          <h3>Age of Exploration</h3>
+          <p>With the Ottoman Empire controlling the eastern trade routes, European powers sought new routes to Asia. Columbus, Vasco da Gama, and others sailed west and south — launching the Age of Exploration. The fall of Constantinople helped discover America.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-mosque"></i>
+          <h3>Istanbul</h3>
+          <p>Mehmed rebuilt the city as Istanbul, the capital of the Ottoman Empire. It flourished as a multicultural metropolis — now Muslim, but still home to Christians and Jews. The Ottoman Empire survived until 1922.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-calendar"></i>
+          <h3>End of the Middle Ages</h3>
+          <p>Historians mark 1453 as the definitive end of the medieval period. Gunpowder had defeated walls that stood for a millennium. The last Roman emperor was dead. A new age — the early modern world — had begun.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "There has never been, and there will never be, a more dreadful happening." — Cardinal Bessarion, Byzantine scholar, on the fall of Constantinople
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Fall of Constantinople · 1453</strong></p>
+      <p style="margin-top: 0.5rem;">The day the Roman Empire truly ended — and the modern world began.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
