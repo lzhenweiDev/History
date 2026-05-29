@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Eruption of Pompeii | Ancient History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #4a3020;
+      --primary-light: #7a5a4a;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --volcano: #8b3a1a;
+      --ash: #8b8b8b;
+      --magma: #d4451a;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #0d0805 0%, #1a1008 30%, #2d180d 40%, #4a2010 60%, #0d0805 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 70%, rgba(212,69,26,0.2) 0%, transparent 40%),
+                  radial-gradient(circle at 30% 40%, rgba(201,161,59,0.08) 0%, transparent 50%);
+      animation: subtleGlow 15s infinite alternate;
+    }
+    @keyframes subtleGlow {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(212,69,26,0.5), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--volcano); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%238b3a1a"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--volcano); box-shadow: 0 4px 15px rgba(139,58,26,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #4a2010 0%, #2d1208 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--volcano);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #2d180d;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e0d0c8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--volcano) 0%, var(--magma) 50%, var(--ash) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(139,58,26,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--volcano);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--volcano), var(--magma));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--volcano);
+    }
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d0c8;
+    }
+    .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(8px); }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -51px; top: 20px;
+      width: 22px; height: 22px;
+      background: var(--magma);
+      border-radius: 50%;
+      border: 4px solid var(--volcano);
+      box-shadow: 0 0 15px rgba(212,69,26,0.5);
+      z-index: 2;
+    }
+    .year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--volcano);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #f5efe8 0%, #f0e0d5 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--magma);
+      color: #2d180d;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--volcano); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d0c8;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #f5efe8, #e8d5c5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--volcano);
+      box-shadow: 0 8px 20px rgba(139,58,26,0.15);
+    }
+
+    .discovery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .discovery-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #e0d0c8;
+      transition: var(--transition);
+    }
+    .discovery-card:hover { box-shadow: var(--shadow-md); border-color: var(--magma); transform: translateY(-4px); }
+    .discovery-card i { font-size: 2.5rem; color: var(--volcano); margin-bottom: 0.8rem; }
+    .discovery-card .discovery-name { font-weight: 700; color: var(--volcano); }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #4a2010, #6b3020);
+      color: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      display: block;
+      color: var(--gold-light);
+    }
+    .stat-box .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      background: linear-gradient(160deg, #0d0805 0%, #1a1008 100%);
+      color: #d4c0b0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--magma);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #0d0805;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Eruption of Vesuvius</h1>
+      <div class="subtitle">The Destruction of Pompeii & Herculaneum · 79 AD</div>
+      <p>A volcanic catastrophe that buried two Roman cities — and preserved them for eternity</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-mountain"></i> Overview</a></li>
+      <li><a href="#timeline"><i class="fas fa-clock"></i> The Eruption</a></li>
+      <li><a href="#pliny"><i class="fas fa-feather"></i> Eyewitness</a></li>
+      <li><a href="#discoveries"><i class="fas fa-archaeology"></i> Discoveries</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Day the Sky Fell</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-city"></i>
+          <h3>Thriving Roman Towns</h3>
+          <p>Pompeii (population ~12,000–15,000) and Herculaneum (~5,000) were prosperous coastal towns near modern Naples. They featured temples, baths, theaters, and luxurious villas — a snapshot of Roman life at its height.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-volcano"></i>
+          <h3>Mount Vesuvius</h3>
+          <p>Before 79 AD, Vesuvius had been dormant for centuries. The Romans didn't even know it was a volcano. They thought the mountain's name came from the word for "unquenchable fire" — but had no idea of its true nature.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-calendar-times"></i>
+          <h3>August 24 (or October?), 79 AD</h3>
+          <p>The traditional date is August 24, based on Pliny the Younger's letters. However, recent archaeological evidence — autumn fruits, heating braziers, and wine harvest remains — suggests the eruption actually occurred in October.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>The Death Toll</h3>
+          <p>Estimates range from <strong>2,000 to 16,000</strong> dead across Pompeii, Herculaneum, and surrounding areas. Many were killed instantly by pyroclastic surges — superheated gas and ash moving at hundreds of kilometers per hour.</p>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box"><span class="number">500°C</span><span class="label">Pyroclastic Surge Temp</span></div>
+        <div class="stat-box"><span class="number">33</span><span class="label">Km Eruption Column</span></div>
+        <div class="stat-box"><span class="number">6</span><span class="label">Pyroclastic Surges</span></div>
+        <div class="stat-box"><span class="number">~16K</span><span class="label">Estimated Deaths</span></div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2>The 24 Hours of Catastrophe</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="year">~1:00 PM</span>
+          <strong>The Mountain Explodes</strong>
+          <p>Vesuvius erupted with the force of <strong>100,000 Hiroshima bombs</strong>. A massive column of ash, pumice, and gas shot 33 km into the stratosphere. Pumice began raining down on Pompeii, accumulating at 15 cm per hour.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">Afternoon</span>
+          <strong>Darkness at Noon</strong>
+          <p>The eruption column blocked the sun. Pompeii was plunged into total darkness. People fled in panic. Some took shelter in buildings — a fatal decision. Roofs collapsed under the weight of accumulated pumice.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">~1:00 AM</span>
+          <strong>First Pyroclastic Surge (Herculaneum)</strong>
+          <p>A superheated avalanche of gas and ash (500°C) swept down the mountain and struck Herculaneum. Those waiting for rescue in the boathouses were killed instantly — their brains boiled, bodies contorted by thermal shock.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">~7:00 AM</span>
+          <strong>Final Surges (Pompeii)</strong>
+          <p>Multiple pyroclastic surges hit Pompeii. The fourth surge — the most powerful — engulfed the city entirely. Anyone still alive was killed instantly. The city was buried under 4–6 meters of ash and pumice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pliny">
+      <h2>The Eyewitness</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-feather-alt"></i></div>
+        <div>
+          <h3>Pliny the Younger</h3>
+          <p>Our only surviving eyewitness account. The 17-year-old Pliny watched the eruption from Misenum, 30 km away. He wrote two detailed letters to the historian Tacitus, describing the eruption cloud "like a pine tree" and the terror as darkness consumed the world. His uncle, Pliny the Elder, died trying to rescue friends by ship.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "The cloud was rising from the mountain... it rose in the form of a pine tree, for it shot up to a great height in a kind of trunk, and then spread out into branches." — Pliny the Younger, Letters 6.16
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>Pliny the Elder</h3>
+          <p>The great naturalist and naval commander died at Stabiae during a rescue mission. He landed to help friends, but was overcome by toxic gases on the beach. His body was found "looking more like sleep than death."</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-book"></i>
+          <h3>The Letters</h3>
+          <p>Pliny's two letters are the earliest detailed description of a volcanic eruption in human history. Volcanologists now use the term <strong>"Plinian eruption"</strong> for the type of explosive column eruption he described.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="discoveries">
+      <h2>Rediscovery & Archaeological Treasures</h2>
+      <div class="discovery-grid">
+        <div class="discovery-card">
+          <i class="fas fa-shovel"></i>
+          <div class="discovery-name">1599</div>
+          <p>First accidental discovery during canal digging. Artifacts found but the site was quickly covered again — the excavators didn't realize what they'd found.</p>
+        </div>
+        <div class="discovery-card">
+          <i class="fas fa-archaeology"></i>
+          <div class="discovery-name">1748</div>
+          <p>Systematic excavation begins under Bourbon King Charles III. The world was stunned by the perfectly preserved Roman city emerging from the ash.</p>
+        </div>
+        <div class="discovery-card">
+          <i class="fas fa-mold"></i>
+          <div class="discovery-name">1863</div>
+          <p>Giuseppe Fiorelli developed the <strong>plaster cast technique</strong>: pouring plaster into cavities left by decomposed bodies, creating hauntingly detailed casts of the victims' final moments.</p>
+        </div>
+        <div class="discovery-card">
+          <i class="fas fa-scroll"></i>
+          <div class="discovery-name">1752</div>
+          <p>The <strong>Villa of the Papyri</strong> discovered in Herculaneum — containing 1,800 carbonized papyrus scrolls. Modern technology is now deciphering these priceless philosophical texts.</p>
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-home"></i>
+          <h3>A City Frozen in Time</h3>
+          <p>The ash preserved everything: frescoes still vibrant with color, carbonized bread in ovens, graffiti on walls ("Gaius was here"), and even food remains. Pompeii is the most complete picture of daily Roman life ever discovered.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-paint-brush"></i>
+          <h3>Art & Erotica</h3>
+          <p>The discovery of erotic frescoes and objects in Pompeii shocked 18th-century Europe. Many items were locked away in the "Secret Cabinet" of the Naples Museum — not accessible to the public until 2000.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-dog"></i>
+          <h3>Famous Casts</h3>
+          <p>The plaster casts include a chained dog contorted in agony, a mother sheltering her child, and a man sitting against a wall with his hands covering his face. These images humanize the tragedy like nothing else.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Vesuvius Today & Legacy</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Still Active</h3>
+          <p>Vesuvius is still an active volcano — the only one on mainland Europe to have erupted in the last 100 years (last eruption: 1944). Over <strong>3 million people</strong> live in its danger zone today, making it one of the world's most dangerous volcanoes.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-ticket-alt"></i>
+          <h3>World Heritage</h3>
+          <p>Pompeii and Herculaneum are UNESCO World Heritage Sites. Pompeii alone attracts over <strong>4 million visitors</strong> annually — making it one of Italy's most popular tourist destinations.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-flask"></i>
+          <h3>Scientific Value</h3>
+          <p>The eruption gave its name to <strong>Plinian eruptions</strong>. The study of Pompeii's destruction has been crucial to modern volcanology and understanding pyroclastic flows — helping protect populations near volcanoes worldwide.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-film"></i>
+          <h3>In Popular Culture</h3>
+          <p>From Bulwer-Lytton's novel <em>The Last Days of Pompeii</em> (1834) to films, documentaries, and museum exhibitions — the story of Pompeii continues to fascinate. It reminds us of nature's power and the fragility of civilization.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "Pompeii is not just an archaeological site. It is a moment in time, forever suspended between life and death." — Modern archaeological reflection
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>The Eruption of Vesuvius · 79 AD</strong></p>
+      <p style="margin-top: 0.5rem;">A city destroyed in hours — but preserved for eternity.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
