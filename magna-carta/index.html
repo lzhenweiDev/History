@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Magna Carta | Medieval History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #3d2b1a;
+      --primary-light: #6b5a3a;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --parchment: #f5e6c8;
+      --wax-seal: #8b1a1a;
+      --ink: #1a1a1a;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a1510 0%, #2d2218 30%, #3d3025 60%, #1a1510 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(139,26,26,0.08) 0%, transparent 40%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.4), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%233d2b1a"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(61,43,26,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #4a3520 0%, #2d1d10 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #2d1d10;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e0d5c8;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--wax-seal) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(139,26,26,0.15); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--wax-seal);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--wax-seal), #c44d4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .clause-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .clause-card {
+      background: linear-gradient(135deg, #fdf8ed, #f5e6c8);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #d6b17e;
+      transition: var(--transition);
+      position: relative;
+    }
+    .clause-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--wax-seal); }
+    .clause-card .clause-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--wax-seal);
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      opacity: 0.3;
+    }
+    .clause-card h3 { font-size: 1.3rem; color: var(--primary); margin-top: 0; }
+
+    .quote {
+      background: linear-gradient(135deg, #fdf8ed 0%, #f5e6c8 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--wax-seal);
+      color: #2d1d10;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--wax-seal); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e0d5c8;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #fdf8ed, #f0e0c8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--wax-seal);
+      box-shadow: 0 8px 20px rgba(139,26,26,0.15);
+    }
+
+    .legacy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .legacy-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #e0d5c8;
+      transition: var(--transition);
+    }
+    .legacy-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); transform: translateY(-4px); }
+    .legacy-card i { font-size: 2.5rem; color: var(--wax-seal); margin-bottom: 0.8rem; }
+    .legacy-card .legacy-name { font-weight: 700; color: var(--primary); }
+
+    footer {
+      background: linear-gradient(160deg, #1a1510 0%, #2d2218 100%);
+      color: #d4c5a0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a1510;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Magna Carta</h1>
+      <div class="subtitle">The Great Charter of Liberties · 1215</div>
+      <p>The document that first limited the power of a king — and laid the foundation for constitutional government, rule of law, and human rights</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#context"><i class="fas fa-crown"></i> King John</a></li>
+      <li><a href="#clauses"><i class="fas fa-list"></i> Key Clauses</a></li>
+      <li><a href="#aftermath"><i class="fas fa-history"></i> Aftermath</a></li>
+      <li><a href="#legacy"><i class="fas fa-globe"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>The Great Charter</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-scroll"></i>
+          <h3>What Is Magna Carta?</h3>
+          <p>A charter of liberties agreed to by King John of England at Runnymede on <strong>June 15, 1215</strong>. It was drafted by rebellious barons to limit royal power and protect their rights. Written in Latin on parchment, sealed with the royal seal.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-times-circle"></i>
+          <h3>It Failed — Then Succeeded</h3>
+          <p>The original Magna Carta was annulled by the Pope after just ten weeks. But it was reissued, revised, and confirmed dozens of times over the following centuries. Its ideas proved impossible to kill.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-gavel"></i>
+          <h3>Revolutionary Ideas</h3>
+          <p>For the first time in English history, a king was forced to accept that <strong>nobody — not even the monarch — is above the law</strong>. The charter established principles of due process, trial by jury, and limits on taxation.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe-europe"></i>
+          <h3>Global Impact</h3>
+          <p>Magna Carta influenced the U.S. Constitution, the Bill of Rights, the Universal Declaration of Human Rights, and legal systems worldwide. It is one of the most important legal documents in human history.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "No free man shall be seized or imprisoned... except by the lawful judgment of his equals or by the law of the land." — Magna Carta, Clause 39
+      </div>
+    </section>
+
+    <section id="context">
+      <h2>King John — The Worst King in English History?</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-crown"></i></div>
+        <div>
+          <h3>John Lackland (r. 1199–1216)</h3>
+          <p>John was the youngest son of Henry II — a man described as cruel, treacherous, and incompetent. He lost Normandy to the French king, was excommunicated by the Pope, and taxed his barons mercilessly to fund failed wars. By 1215, the barons had had enough.</p>
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-coins"></i>
+          <h3>Crushing Taxation</h3>
+          <p>John imposed enormous taxes (scutage) to pay for his disastrous military campaigns in France. He also seized baronial lands, sold heiresses in marriage, and demanded huge ransoms. The barons were being bled dry.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-church"></i>
+          <h3>Conflict with the Church</h3>
+          <p>John quarreled with Pope Innocent III over the appointment of the Archbishop of Canterbury. The Pope placed England under interdict — no sacraments, no marriages, no burials in consecrated ground. John was excommunicated, then cynically surrendered England to the Pope and received it back as a papal fief.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-fist-raised"></i>
+          <h3>Rebellion</h3>
+          <p>In 1215, the barons rose in revolt. They captured London — and the city's support was decisive. John, isolated and outmaneuvered, was forced to negotiate. The result was Magna Carta, sealed at Runnymede meadow near Windsor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="clauses">
+      <h2>Key Clauses That Changed the World</h2>
+      <div class="clause-grid">
+        <div class="clause-card">
+          <div class="clause-number">39</div>
+          <h3>Due Process of Law</h3>
+          <p>"No free man shall be seized or imprisoned... except by the lawful judgment of his equals or by the law of the land." The foundation of habeas corpus and the right to a fair trial — still cited in courts today.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-number">40</div>
+          <h3>Justice for All</h3>
+          <p>"To no one will we sell, to no one deny or delay right or justice." A promise that justice would not be for sale — a radical idea in a world where the rich could buy favorable judgments.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-number">12</div>
+          <h3>No Taxation Without Consent</h3>
+          <p>Taxes could not be imposed without the "general consent of the realm" — a council of barons and bishops. This is the distant ancestor of parliamentary control over taxation.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-number">14</div>
+          <h3>Council of the Realm</h3>
+          <p>Required the king to summon a council of barons and church leaders to consent to taxation. This council evolved into Parliament — one of the world's oldest representative assemblies.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-number">61</div>
+          <h3>The Security Clause</h3>
+          <p>A council of 25 barons was empowered to enforce the charter — by seizing the king's castles and lands if necessary. This was revolutionary: a mechanism to hold the king accountable. It was also the clause that got the charter annulled.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="aftermath">
+      <h2>Annulment, Death & Resurrection</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-times"></i>
+          <h3>Immediate Failure</h3>
+          <p>John had no intention of honoring Magna Carta. He appealed to Pope Innocent III, who declared the charter "null and void of all validity forever" in August 1215 — just ten weeks after it was sealed. Civil war resumed.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-skull"></i>
+          <h3>John's Death (1216)</h3>
+          <p>John died of dysentery in October 1216 — likely from overeating peaches and drinking too much cider. His nine-year-old son, Henry III, became king. The regents reissued a revised Magna Carta to rally support against the French invaders.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-redo"></i>
+          <h3>Reissues & Confirmations</h3>
+          <p>Magna Carta was reissued in 1216, 1217, and definitively in 1225. It was confirmed dozens of times by English monarchs over the following centuries. By the 14th century, it had become a symbol of the law's supremacy over the king.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-parliament"></i>
+          <h3>Parliamentary Development</h3>
+          <p>The council of the realm evolved into the English Parliament. The principle that the king needed consent to tax became the foundation of parliamentary power — and, eventually, constitutional monarchy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Global Legacy</h2>
+      <div class="legacy-grid">
+        <div class="legacy-card">
+          <i class="fas fa-flag-usa"></i>
+          <div class="legacy-name">United States</div>
+          <p>The Founding Fathers cited Magna Carta extensively. The Fifth Amendment ("due process of law") and the Constitution's limits on executive power directly echo the charter.</p>
+        </div>
+        <div class="legacy-card">
+          <i class="fas fa-balance-scale"></i>
+          <div class="legacy-name">Rule of Law</div>
+          <p>Magna Carta established the principle that everyone — including the ruler — is subject to the law. This is the bedrock of modern constitutional government.</p>
+        </div>
+        <div class="legacy-card">
+          <i class="fas fa-globe"></i>
+          <div class="legacy-name">Human Rights</div>
+          <p>The Universal Declaration of Human Rights (1948) echoes Magna Carta's language on fair trial and justice. The charter is recognized as a foundational human rights document.</p>
+        </div>
+        <div class="legacy-card">
+          <i class="fas fa-landmark"></i>
+          <div class="legacy-name">Surviving Copies</div>
+          <p>Four original 1215 copies survive — two in the British Library, one at Lincoln Cathedral, one at Salisbury Cathedral. They are among the most treasured documents in the world.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "Magna Carta is the foundation of the freedom of the individual against the arbitrary authority of the despot." — Lord Denning, celebrated British judge
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>Magna Carta · Medieval History</strong></p>
+      <p style="margin-top: 0.5rem;">The document that told the king he was not above the law — and changed the world forever.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
