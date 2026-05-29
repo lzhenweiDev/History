@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gladiators | Ancient History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+      background: #faf8f2;
+      color: #2c2416;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #8b1a1a;
+      --primary-light: #c44d4d;
+      --gold: #c9a13b;
+      --gold-light: #e0c87c;
+      --dark: #1a1e2b;
+      --cream: #fdf8ed;
+      --white: #ffffff;
+      --arena-sand: #d4b896;
+      --blood-red: #8b1a1a;
+      --armor-steel: #6b7b8d;
+      --shadow-sm: 0 4px 15px rgba(0,0,0,0.06);
+      --shadow-md: 0 12px 35px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+      --border-radius: 20px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a0808 0%, #2d0a0a 30%, #3d1010 60%, #1a0808 100%);
+      color: white;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 8px solid var(--gold);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(201,161,59,0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(139,26,26,0.2) 0%, transparent 50%);
+      animation: subtleShift 20s infinite alternate;
+    }
+    @keyframes subtleShift {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-6px,6px); }
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(201,161,59,0.5), 2px 2px 0 rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease;
+    }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 750px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.06);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      letter-spacing: 0.8px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .language-bar {
+      background: rgba(253,248,237,0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+      border-bottom: 1px solid #e0d3b8;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+    .language-bar label {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .language-bar label i { color: var(--primary); font-size: 1.1rem; }
+    #google_translate_element { display: inline-block; }
+
+    .goog-te-combo {
+      padding: 0.55rem 2rem 0.55rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #d6b17e;
+      background: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      transition: var(--transition);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%238b1a1a"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      appearance: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .goog-te-combo:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(139,26,26,0.15); }
+
+    nav {
+      background: linear-gradient(180deg, #5c1010 0%, #3d0808 100%);
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+    nav .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1.1rem 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav .nav-links li a:hover {
+      background: rgba(0,0,0,0.2);
+      border-bottom: 3px solid var(--gold);
+      color: #ffde8d;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 5rem 0; border-bottom: 1px solid rgba(214,177,126,0.3); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--blood-red);
+      margin-bottom: 2.5rem;
+      border-left: 8px solid var(--gold);
+      padding-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      color: #3d1010;
+      margin: 1.5rem 0 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid #e8d0d0;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, var(--blood-red) 0%, var(--gold) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(139,26,26,0.2); border-color: var(--gold-light); }
+    .card:hover::before { opacity: 1; }
+    .card i {
+      font-size: 2.5rem;
+      color: var(--blood-red);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, var(--blood-red), #c44d4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card p { color: #5c5347; line-height: 1.7; }
+
+    .gladiator-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .gladiator-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #e8d0d0;
+      transition: var(--transition);
+    }
+    .gladiator-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); transform: translateY(-5px); }
+    .gladiator-card i { font-size: 2.8rem; color: var(--blood-red); margin-bottom: 0.8rem; }
+    .gladiator-card .type-name { font-weight: 700; font-size: 1.2rem; color: var(--blood-red); }
+    .gladiator-card .type-gear { font-size: 0.85rem; color: #6b5a5a; margin-top: 0.5rem; }
+
+    .quote {
+      background: linear-gradient(135deg, #fdf5f5 0%, #f8e8e8 100%);
+      padding: 2.5rem;
+      border-radius: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 2px 15px rgba(0,0,0,0.04), var(--shadow-md);
+      border-left: 8px solid var(--gold);
+      color: #3d1010;
+      letter-spacing: 0.5px;
+    }
+    .quote i { color: var(--blood-red); margin-right: 8px; font-size: 2rem; opacity: 0.7; }
+
+    .important-figure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 1.8rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid #e8d0d0;
+    }
+    .important-figure:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--gold-light); }
+    .important-figure .icon-circle {
+      min-width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, #fdf5f5, #f0d8d8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--blood-red);
+      box-shadow: 0 8px 20px rgba(139,26,26,0.15);
+    }
+
+    .arena-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .arena-fact {
+      background: linear-gradient(135deg, #5c1010, #7a2020);
+      color: white;
+      padding: 1.8rem 1.2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .arena-fact .fact-icon { font-size: 2rem; margin-bottom: 0.5rem; color: var(--gold-light); }
+    .arena-fact .fact-text { font-weight: 600; }
+
+    footer {
+      background: linear-gradient(160deg, #1a0808 0%, #2d0a0a 100%);
+      color: #d4c0c0;
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1rem;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-top {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--gold);
+      color: #1a0808;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(201,161,59,0.4);
+    }
+    .btn-top:hover { background: #d4a832; color: #000; box-shadow: 0 10px 30px rgba(201,161,59,0.6); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      h2 { font-size: 2.2rem; }
+      nav .nav-links li a { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+      .important-figure { flex-direction: column; text-align: center; }
+    }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+  </style>
+</head>
+<body>
+  <div class="language-bar">
+    <label for="translateSelect"><i class="fas fa-globe"></i> Choose Language / Sprache wählen :</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Gladiators</h1>
+      <div class="subtitle">Warriors of the Arena · Rome's Blood Sport</div>
+      <p>Slaves, prisoners, and volunteers who fought to the death for the entertainment of the Roman masses</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#overview"><i class="fas fa-eye"></i> Overview</a></li>
+      <li><a href="#types"><i class="fas fa-helmet-battle"></i> Types</a></li>
+      <li><a href="#arena"><i class="fas fa-archway"></i> The Arena</a></li>
+      <li><a href="#life"><i class="fas fa-fist-raised"></i> Life & Death</a></li>
+      <li><a href="#legacy"><i class="fas fa-monument"></i> Legacy</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="overview">
+      <h2>Blood in the Sand</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-history"></i>
+          <h3>Origins</h3>
+          <p>Gladiatorial combat began as funeral rites (<em>munera</em>) in the 3rd century BC — blood offerings to honor the dead. It evolved into mass public entertainment sponsored by politicians seeking popularity.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Who Were Gladiators?</h3>
+          <p>Most were <strong>slaves, prisoners of war, or condemned criminals</strong> — but some were free volunteers seeking fame, fortune, and excitement. They trained in special schools called <em>ludi</em> under a <em>lanista</em> (trainer).</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Golden Age</h3>
+          <p>Gladiatorial games peaked from the 1st century BC to the 2nd century AD. The Colosseum alone could hold <strong>50,000–80,000 spectators</strong> — larger than many modern stadiums.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-ban"></i>
+          <h3>The End</h3>
+          <p>Emperor Constantine I banned gladiatorial combat in 325 AD, influenced by Christianity. The last known gladiator fights in Rome occurred around 404 AD. The spectacle was over.</p>
+        </div>
+      </div>
+      <div class="arena-facts">
+        <div class="arena-fact"><div class="fact-icon"><i class="fas fa-skull"></i></div><div class="fact-text">~400,000 died in the Colosseum</div></div>
+        <div class="arena-fact"><div class="fact-icon"><i class="fas fa-users"></i></div><div class="fact-text">80,000 max spectators</div></div>
+        <div class="arena-fact"><div class="fact-icon"><i class="fas fa-calendar"></i></div><div class="fact-text">Games lasted 100+ days</div></div>
+        <div class="arena-fact"><div class="fact-icon"><i class="fas fa-trophy"></i></div><div class="fact-text">Some fought 50+ times</div></div>
+      </div>
+    </section>
+
+    <section id="types">
+      <h2>Types of Gladiators</h2>
+      <div class="gladiator-types">
+        <div class="gladiator-card">
+          <i class="fas fa-shield-haltered"></i>
+          <div class="type-name">Murmillo</div>
+          <div class="type-gear">Large shield (scutum), gladius sword, fish-crest helmet. The "heavy infantry" gladiator.</div>
+        </div>
+        <div class="gladiator-card">
+          <i class="fas fa-fish"></i>
+          <div class="type-name">Retiarius</div>
+          <div class="type-gear">Net, trident, and dagger. No helmet — relied on speed and entangling opponents.</div>
+        </div>
+        <div class="gladiator-card">
+          <i class="fas fa-horse"></i>
+          <div class="type-name">Thraex (Thracian)</div>
+          <div class="type-gear">Curved scimitar (sica), small square shield, distinctive griffin helmet.</div>
+        </div>
+        <div class="gladiator-card">
+          <i class="fas fa-chess-knight"></i>
+          <div class="type-name">Secutor</div>
+          <div class="type-gear">Smooth helmet with small eye holes — designed to counter the Retiarius' net.</div>
+        </div>
+        <div class="gladiator-card">
+          <i class="fas fa-chariot"></i>
+          <div class="type-name">Essedarius</div>
+          <div class="type-gear">Fought from Celtic-style war chariots. Spectacular and rare in the arena.</div>
+        </div>
+        <div class="gladiator-card">
+          <i class="fas fa-female"></i>
+          <div class="type-name">Gladiatrix</div>
+          <div class="type-gear">Female gladiators — rare but documented. Often fought each other or dwarves for novelty.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="arena">
+      <h2>The Colosseum & Arena</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-landmark"></i>
+          <h3>The Flavian Amphitheater</h3>
+          <p>Built 70–80 AD under Vespasian and Titus. The Colosseum was the largest amphitheater ever built — <strong>189m long, 156m wide, 50m high</strong>. It remains an icon of Rome.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-water"></i>
+          <h3>Naval Battles</h3>
+          <p>The arena could be flooded for <em>naumachiae</em> — mock naval battles with real ships and thousands of combatants. An engineering marvel of its time.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-elephant"></i>
+          <h3>Animal Hunts</h3>
+          <p><em>Venationes</em> (beast hunts) often preceded gladiator fights. Lions, bears, elephants, and exotic animals were imported from across the empire. Thousands were slaughtered.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-sun"></i>
+          <h3>Velarium</h3>
+          <p>A massive retractable awning operated by sailors from the Roman navy. It shaded spectators from the sun — an extraordinary feat of engineering.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="life">
+      <h2>Life, Death & Fame</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-utensils"></i>
+          <h3>Diet & Training</h3>
+          <p>Gladiators ate a high-carbohydrate diet of barley, beans, and dried fruit — nicknamed <em>hordearii</em> ("barley men"). They trained rigorously in specialized fighting techniques.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-heartbeat"></i>
+          <h3>Medical Care</h3>
+          <p>Surprisingly, gladiators received excellent medical attention — they were valuable investments. The famous physician Galen began his career treating gladiators in Pergamon.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-thumbs-up"></i>
+          <h3>Thumbs Up or Down?</h3>
+          <p>The famous gesture is likely misunderstood. <em>Pollice verso</em> ("turned thumb") meant death — but the exact gesture is debated. The editor (sponsor) made the final decision, influenced by the crowd.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-trophy"></i>
+          <h3>Freedom</h3>
+          <p>A gladiator who survived enough fights could earn a wooden sword (<em>rudis</em>) — symbolizing freedom. Some became trainers; others returned voluntarily to the arena.</p>
+        </div>
+      </div>
+      <div class="quote">
+        <i class="fas fa-quote-left"></i> "Ave, Imperator, morituri te salutant!" — "Hail, Emperor, those who are about to die salute you!" — Famous gladiator salute (possibly legendary)
+      </div>
+    </section>
+
+    <section id="legacy">
+      <h2>Famous Gladiators & Legacy</h2>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-star"></i></div>
+        <div>
+          <h3>Spartacus</h3>
+          <p>A Thracian gladiator who led the greatest slave revolt in Roman history (73–71 BC). He and 70 comrades escaped from a gladiator school, raised an army of 120,000, and defeated multiple Roman legions before being crushed. His story inspired countless films and revolutionaries.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-medal"></i></div>
+        <div>
+          <h3>Flamma</h3>
+          <p>A Syrian-born gladiator who fought 34 times, winning 21, drawing 9, and losing 4. He was awarded the <em>rudis</em> (freedom) four times — and refused it each time, choosing to remain a gladiator.</p>
+        </div>
+      </div>
+      <div class="important-figure">
+        <div class="icon-circle"><i class="fas fa-crown"></i></div>
+        <div>
+          <h3>Commodus (The Emperor)</h3>
+          <p>Emperor from 180–192 AD who fancied himself a gladiator. He fought in the arena (against crippled opponents and animals) — behavior that horrified the Roman elite and contributed to his assassination.</p>
+        </div>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        <div class="card">
+          <i class="fas fa-film"></i>
+          <h3>In Popular Culture</h3>
+          <p>From <em>Spartacus</em> (1960) to <em>Gladiator</em> (2000), films have romanticized the arena. The image of the gladiator — courage in the face of death — remains powerful.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-baseball-ball"></i>
+          <h3>Modern Sports</h3>
+          <p>Some historians see echoes of gladiatorial combat in modern combat sports like MMA and boxing — though mercifully without the death toll.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-landmark"></i>
+          <h3>The Colosseum Today</h3>
+          <p>One of the New Seven Wonders of the World and Italy's most visited monument, drawing over 7 million visitors annually. It still stands — a reminder of Rome's glory and brutality.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 1px;"><i class="fas fa-book"></i> <strong>Gladiators · Ancient History</strong></p>
+      <p style="margin-top: 0.5rem;">Warriors who faced death with courage — and became legends.</p>
+      <a href="#" class="btn-top"><i class="fas fa-arrow-up"></i> Back to top</a>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">© History Illuminated — Knowledge for everyone</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,de,fr,es,it,pt,ru,zh-CN,ja,ar,nl,pl,sv,tr,uk,ko,hi',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
